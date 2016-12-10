@@ -260,6 +260,8 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font.css" />
     <Content Include="Content\ladda.min.css" />
+    <Content Include="Content\login-animate-custom.css" />
+    <Content Include="Content\login-style.css" />
     <Content Include="Content\lsb.css" />
     <Content Include="Content\monthly.css" />
     <Content Include="Content\morris.css" />
@@ -271,6 +273,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\banner.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="Models\FISdb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -347,12 +350,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\ExportLOGPage.cshtml" />
     <Content Include="Views\Create\CreateEmployee.cshtml" />
     <Content Include="Views\Create\CreateDevice.cshtml" />
     <Content Include="Views\Create\UpdateEmpImage.cshtml" />
-    <Content Include="Views\Employee\Dashboard.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Users\ListProfile.cshtml" />
     <Content Include="Views\Users\Profile.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
