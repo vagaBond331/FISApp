@@ -1,8 +1,50 @@
-﻿
+﻿@model FISApp.Models.UpdateEmpImageModel
 @{
     ViewBag.Title = "UpdateEmpImage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UpdateEmpImage</h2>
-
+<div class="agile-bottom-grids">
+    <div class="col-md-6 agile-bottom-right">
+        <div class="agile-bottom-grid">
+            <div class="area-grids-heading">
+                <h3>Avatar</h3>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="col-md-5 header-left">
+                        <img height="300" width="300" src="@Model.avatar" id="imgavatar" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <div class="fileUpload btn btn-primary">
+                            <span>Upload</span>
+                            @Html.TextBoxFor(model => model._avatar, new { type = "file", id = "_avatar", @class = "upload" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 agile-bottom-left">
+        <div class="agile-bottom-grid">
+            <div class="area-grids-heading">
+                <h3>Fingerprint Image</h3>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="col-md-5 header-left">
+                        <img height="300" width="300" src="@Model.finger_image_src" id="finger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Refresh" onclick="return Validate();" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>

@@ -1,8 +1,92 @@
-﻿
+﻿@model FISApp.Models.AdminViewModels
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Dashboard</h2>
+<div class="social grid">
+    <div class="grid-info">
+        <h2>Attendance of @DateTime.Now.Month - @DateTime.Now.Year</h2>
+        <div class="contain">
+            <div class="gantt">
+                <table class="overflow-y">
+                    <thead>
+                        <tr>
+                            <th>
+                                Employee
+                            </th>
+                            @for (int i = 0; i < Model.numDays; i++)
+                            {
+                                <th>@(i + 1)</th>
+                            }
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        @for (int i = 0; i < Model.empListName.Count; i++)
+                        {
+                            <tr>
+                                <th>
+                                    <span>@Model.empListName[i]</span>
+                                </th>
+                                @for (int j = 1; j < Model.numDays + 1; j++)
+                                {
+                                    if (j > DateTime.Now.Day)
+                                    {
+                                        <td></td>}
+                                    else if (@Model.monthAttend[i][j] == true)
+                                    {
+                                        <td class="at">Attent</td>}
+                                    else
+                                    {
+                                        <td class="ab">Absent</td>}
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="agile-grids">
+    <div class="col-md-4 charts-right">
+        <!-- area-chart -->
+        <div class="area-grids">
+            <div class="area-grids-heading">
+                <h3>Device status</h3>
+            </div>
+            <div>
+                @foreach (var item in Model.listDevice)
+                {
+                    if (item.device_status == 1)
+                    {
+                        <p>@item.device_name is <a style="color:lawngreen" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Active</a></p>
+                    }
+                    else
+                    {
+                        <p>@item.device_name is <a style="color:red" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
+                    }
+                }
+            </div>
+        </div>
+        <!-- //area-chart -->
+    </div>
+    <div class="col-md-8 chart-left">
+        <!-- updating-data -->
+        <div class="agile-Updating-grids">
+            <div class="area-grids-heading">
+                <h3>Log Attend (<span><a href="@Url.Action("ExportLOGPage", "Admin")">Export here</a></span>)</h3>
+            </div>
+            <div>
+                @foreach (var item in Model.listAttent)
+                {
+                    <p><a href="@Url.Action("Profile", "Users", new {@userID = item.user_id})">@item.fullname</a> attend at "@item.location" at @item.log_time</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>

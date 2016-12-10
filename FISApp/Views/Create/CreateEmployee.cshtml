@@ -1,8 +1,90 @@
-﻿
+﻿@model FISApp.Models.CreateEmployeeModel
 @{
     ViewBag.Title = "CreateEmployee";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateEmployee</h2>
+<div class="social grid">
+    <div class="grid-info">
+        <h1>Register new employee</h1>
+        @using (Html.BeginForm("CreateEmployee", "Create", FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <hr />
+                @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+                {
+                    @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary().ToHtmlString()))
+                }
 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.full_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.full_name, new { htmlAttributes = new { @class = "form-control", @id = "fullName" } })
+                        @Html.ValidationMessageFor(model => model.full_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", @id = "dob" } })
+                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @id = "address" } })
+                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.posID, htmlAttributes: new { @class = "control-label col-md-2", @id = "posId" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.posID, new SelectList(ViewBag.PosList, "Value", "Text"))
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.department, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.department, new { htmlAttributes = new { @class = "form-control", @id = "depart" } })
+                        @Html.ValidationMessageFor(model => model.department, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @id = "phone" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Register" class="btn btn-default" id="btnRegis" />
+                    </div>
+                </div>
+            </div>
+            <div id="dialog" title="New User Id">
+                <p id="dialogContent"></p>
+            </div>
+        }
+
+        <div>
+            <a href="@Url.Action("ListProfile", "Users")">Back to list</a>
+        </div>
+    </div>
+</div>

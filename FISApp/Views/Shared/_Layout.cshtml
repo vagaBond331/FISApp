@@ -6,11 +6,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <head>
-    <title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>FIS App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- bootstrap-css -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -117,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         Logout
                     </span>
                 </a>
-                <a href="@Url.Action("Logout", "Users")"><i class="lnr lnr-book"></i> <span>Logout</span></a>
+                <a href="@Url.Action("Logout", "Users")"><i class="lnr lnr-book"></i></a>
             </li>
         </ul>
     </nav>
@@ -142,12 +140,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <section class="full-top">
                     <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
                 </section>
-            </div>
-            <div class="w3l_search">
-                <form action="#" method="post">
-                    <input type="text" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
-                    <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </form>
             </div>
             <div class="header-right">
                 <div class="profile_details_left">
@@ -176,7 +168,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="main-grid">
             @RenderBody()
         </div>
-        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>       
+        <!-- footer -->
+        <div class="footer">
+            <p>© 2016 Colored . All Rights Reserved . Created </a></p>
+        </div>
+        <!-- //footer -->
     </section>
 </body>
 </html>
