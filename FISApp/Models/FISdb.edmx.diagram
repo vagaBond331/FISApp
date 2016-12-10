@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e37daa928884f1187dd84b5a709aa2b" Name="Diagram1">
+        <EntityTypeShape EntityType="FISModel.Attent" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FISModel.Device" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FISModel.Position" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FISModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FISModel.TempUser" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FISModel.User" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="FISModel.att1" ManuallyRouted="false" />
+        <AssociationConnector Association="FISModel.att2" ManuallyRouted="false" />
+        <AssociationConnector Association="FISModel.de1" ManuallyRouted="false" />
+        <AssociationConnector Association="FISModel.pos1" ManuallyRouted="false" />
+        <AssociationConnector Association="FISModel.us1" ManuallyRouted="false" />
+        <AssociationConnector Association="FISModel.FK__TempUser__tempus__0C85DE4D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
