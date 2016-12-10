@@ -253,12 +253,25 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\basictable.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\examples.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font.css" />
+    <Content Include="Content\ladda.min.css" />
+    <Content Include="Content\lsb.css" />
+    <Content Include="Content\monthly.css" />
+    <Content Include="Content\morris.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\table-style.css" />
+    <Content Include="Content\typo.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\logo.png" />
     <Content Include="Models\FISdb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FISdb.edmx</DependentUpon>
@@ -281,17 +294,45 @@
     <Content Include="Models\FISdb.edmx.diagram">
       <DependentUpon>FISdb.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\gmaps.js" />
+    <Content Include="Scripts\graph.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.basictable.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\jquery.geocomplete.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.vmap.js" />
+    <Content Include="Scripts\jquery.vmap.sampledata.js" />
+    <Content Include="Scripts\jquery.vmap.world.js" />
+    <Content Include="Scripts\jquery1.9.1.min.js" />
+    <Content Include="Scripts\jquery2.0.3.min.js" />
+    <Content Include="Scripts\logger.js" />
+    <Content Include="Scripts\lsb.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\monthly.js" />
+    <Content Include="Scripts\morris.js" />
+    <Content Include="Scripts\raphael-min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\screenfull.js" />
+    <Content Include="Scripts\skycons.js" />
+    <Content Include="Scripts\valida.2.1.6.min.js" />
+    <Content Include="Scripts\validator.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
