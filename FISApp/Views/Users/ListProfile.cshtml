@@ -1,8 +1,111 @@
-﻿
+﻿@model IEnumerable<FISApp.Models.Profile>
 @{
     ViewBag.Title = "ListProfile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListProfile</h2>
+<div class="social grid">
+    <div class="grid-info">
+        <table class="table">
+            <tr colspan="5"><div class="panel-title">List manager</div></tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.userID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th></th>
+            </tr>
 
+            @foreach (var item in Model)
+            {
+                if (item.user_type == 2)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.position)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+
+<div class="social grid">
+    <div class="grid-info">
+        <table class="table">
+            <tr colspan="5"><div class="panel-title">List Employee</div></tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.userID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.user_type == 3)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.position)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

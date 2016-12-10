@@ -266,6 +266,9 @@
     <Content Include="Content\monthly.css" />
     <Content Include="Content\morris.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\table-component.css" />
+    <Content Include="Content\table-demo.css" />
+    <Content Include="Content\table-normalize.css" />
     <Content Include="Content\table-style.css" />
     <Content Include="Content\typo.css" />
     <Content Include="favicon.ico" />
@@ -273,6 +276,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\avatar.jpg" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="Models\FISdb.Context.tt">
@@ -314,6 +318,7 @@
     <Content Include="Scripts\jquery.countdown.min.js" />
     <Content Include="Scripts\jquery.geocomplete.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.stickyheader.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -362,6 +367,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\blokk\" />
+    <Folder Include="fonts\codropsicons\" />
     <Folder Include="Views\HttpRequest\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

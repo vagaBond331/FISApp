@@ -31,8 +31,33 @@
 
 <div class="social grid">
     <div class="grid-info">
-
-
+        <table border="1">
+            <tr>
+                @for (int i = 0; i < Model.numDays; i++)
+                {
+                    <th class="tbcell">@(i + 1)</th>
+                }
+            </tr>
+            <tr>
+                @for (int i = 1; i < Model.numDays + 1; i++)
+                {
+                    <td>
+                        @if (@Model.monthAttend[i] == true)
+                        {
+                            <span>v</span>
+                        }
+                        else if (i < DateTime.Now.Day)
+                        {
+                            <span>-</span>
+                        }
+                        else
+                        {
+                            <span></span>
+                        }
+                    </td>
+                }
+            </tr>
+        </table>
     </div>
 </div>
 
@@ -45,7 +70,7 @@
                 <h3>Device status</h3>
             </div>
             <div>
-                
+
             </div>
         </div>
         <!-- //area-chart -->

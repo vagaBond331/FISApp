@@ -3,50 +3,53 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/table-component.css" rel="stylesheet" />
+<link href="~/Content/table-demo.css" rel="stylesheet" />
+<link href="~/Content/table-normalize.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.stickyheader.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
 
 <div class="social grid">
     <div class="grid-info">
         <h2>Attendance of @DateTime.Now.Month - @DateTime.Now.Year</h2>
-        <div class="contain">
-            <div class="gantt">
-                <table class="overflow-y">
-                    <thead>
-                        <tr>
-                            <th>
-                                Employee
-                            </th>
-                            @for (int i = 0; i < Model.numDays; i++)
-                            {
-                                <th>@(i + 1)</th>
-                            }
-                        </tr>
-                    </thead>
+        <br />
+        <table class="overflow-y">
+            <thead>
+                <tr>
+                    <th>
+                        Employee
+                    </th>
+                    @for (int i = 0; i < Model.numDays; i++)
+                    {
+                        <th>@(i + 1)</th>
+                    }
+                </tr>
+            </thead>
 
-                    <tbody>
-                        @for (int i = 0; i < Model.empListName.Count; i++)
+            <tbody>
+                @for (int i = 0; i < Model.empListName.Count; i++)
+                {
+                    <tr>
+                        <th>
+                            <span>@Model.empListName[i]</span>
+                        </th>
+                        @for (int j = 1; j < Model.numDays + 1; j++)
                         {
-                            <tr>
-                                <th>
-                                    <span>@Model.empListName[i]</span>
-                                </th>
-                                @for (int j = 1; j < Model.numDays + 1; j++)
-                                {
-                                    if (j > DateTime.Now.Day)
-                                    {
-                                        <td></td>}
-                                    else if (@Model.monthAttend[i][j] == true)
-                                    {
-                                        <td class="at">Attent</td>}
-                                    else
-                                    {
-                                        <td class="ab">Absent</td>}
-                                }
-                            </tr>
+                            if (j > DateTime.Now.Day)
+                            {
+                                <td style="color:white">Notyet</td>}
+                            else if (@Model.monthAttend[i][j] == true)
+                            {
+                                <td style="color:green">Attent</td>}
+                            else
+                            {
+                                <td style="color:hotpink">Absent</td>}
                         }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -63,11 +66,11 @@
                 {
                     if (item.device_status == 1)
                     {
-                        <p>@item.device_name is <a style="color:lawngreen" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Active</a></p>
+                        <p>@item.device_name is <a style="color:green" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Active</a></p>
                     }
                     else
                     {
-                        <p>@item.device_name is <a style="color:red" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
+                        <p>@item.device_name is <a style="color:pink" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
                     }
                 }
             </div>

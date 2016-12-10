@@ -129,10 +129,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <section class="title-bar">
             <div class="logo">
                 <h1>
-                    <a href="index.html"><img src="~/images/logo.png" />
-                       @if (Session["logUserType"].ToString() == "1") {<span>Admin</span>}
-                       else if (Session["logUserType"].ToString() == "2") {<span>Manager</span>}
-                       else {<span>Employee</span>}
+                    <a href="index.html">
+                        <img src="~/images/logo.png" />
+                        @if (Session["logUserType"].ToString() == "1")
+                        {<span>Admin</span>}
+                        else if (Session["logUserType"].ToString() == "2")
+                        {<span>Manager</span>}
+                        else
+                        {<span>Employee</span>}
                     </a>
                 </h1>
             </div>
@@ -168,7 +172,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="main-grid">
             @RenderBody()
         </div>
-        <script src="~/Scripts/bootstrap.js"></script>       
+        <script src="~/Scripts/bootstrap.js"></script>
         <!-- footer -->
         <div class="footer">
             <p>© 2016 Colored . All Rights Reserved . Created </a></p>

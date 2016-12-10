@@ -476,6 +476,7 @@ body a:hover{
     padding: 3em;
 }
 .dashboard-page .title-bar {
+    height: 100px;
     position: relative;
     display: block;
     background-color: #fff;
