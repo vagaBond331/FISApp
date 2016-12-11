@@ -109,7 +109,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </ul>
         <ul class="logout">
             <li>
-                <a href="login.html">
+                <a href="@Url.Action("Logout", "Users")">
                     <i class="icon-off nav-icon"></i>
                     <span class="nav-text">
                         Logout
@@ -128,17 +128,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </nav>
         <section class="title-bar">
             <div class="logo">
-                <h1>
-                    <a href="index.html">
-                        <img src="~/images/logo.png" />
-                        @if (Session["logUserType"].ToString() == "1")
-                        {<span>Admin</span>}
-                        else if (Session["logUserType"].ToString() == "2")
-                        {<span>Manager</span>}
-                        else
-                        {<span>Employee</span>}
-                    </a>
-                </h1>
+                <h3>
+                    <img src="~/images/logo.png" />
+                    @if (Session["logUserType"].ToString() == "1")
+                    {<span>Admin</span>}
+                    else if (Session["logUserType"].ToString() == "2")
+                    {<span>Manager</span>}
+                    else
+                    {<span>Employee</span>}
+                </h3>
             </div>
             <div class="full-screen">
                 <section class="full-top">
@@ -159,7 +157,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <ul class="dropdown-menu drp-mnu">
                                     <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
                                     <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-                                    <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    <li> <a href="@Url.Action("Logout", "Users")"><i class="fa fa-sign-out"></i> Logout</a> </li>
                                 </ul>
                             </li>
                         </ul>

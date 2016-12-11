@@ -18,6 +18,12 @@ namespace FISApp.Models
 
         public List<AttendViewModel> listAttent { get; set; }
 
+        public int[] countAttent { get; set; }
+
+        public int[] countAbsent { get; set; }
+
+        public string[] countDate { get; set; }
+
         public AdminViewModels()
         {
             logUser = new User();
@@ -26,6 +32,7 @@ namespace FISApp.Models
             numDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             listDevice = new List<Device>();
             listAttent = new List<AttendViewModel>();
+            countDate = new string[7];
         }
     }
 

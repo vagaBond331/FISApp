@@ -7,61 +7,89 @@
 <link href="~/Content/table-demo.css" rel="stylesheet" />
 <link href="~/Content/table-normalize.css" rel="stylesheet" />
 <script src="~/Scripts/jquery.stickyheader.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+<script src="~/Scripts/jquery.ba-throttle-debounce.min.js"></script>
 
-<div class="social grid">
-    <div class="grid-info">
-        <h2>Attendance of @DateTime.Now.Month - @DateTime.Now.Year</h2>
-        <br />
-        <table class="overflow-y">
-            <thead>
-                <tr>
-                    <th>
-                        Employee
-                    </th>
-                    @for (int i = 0; i < Model.numDays; i++)
-                    {
-                        <th>@(i + 1)</th>
-                    }
-                </tr>
-            </thead>
+<div class="panel panel-widget forms-panel">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>Attendance of @DateTime.Now.Month - @DateTime.Now.Year</h3>
+            </div>
+            <div class="form-body" style="padding:0px">
+                <table class="overflow-y">
+                    <thead>
+                        <tr>
+                            <th>
+                                Employee
+                            </th>
+                            @for (int i = 0; i < Model.numDays; i++)
+                            {
+                                <th>@(i + 1)</th>
+                            }
+                        </tr>
+                    </thead>
 
-            <tbody>
-                @for (int i = 0; i < Model.empListName.Count; i++)
-                {
-                    <tr>
-                        <th>
-                            <span>@Model.empListName[i]</span>
-                        </th>
-                        @for (int j = 1; j < Model.numDays + 1; j++)
+                    <tbody>
+                        @for (int i = 0; i < Model.empListName.Count; i++)
                         {
-                            if (j > DateTime.Now.Day)
-                            {
-                                <td style="color:white">Notyet</td>}
-                            else if (@Model.monthAttend[i][j] == true)
-                            {
-                                <td style="color:green">Attent</td>}
-                            else
-                            {
-                                <td style="color:hotpink">Absent</td>}
+                            <tr>
+                                <th>
+                                    <span>@Model.empListName[i]</span>
+                                </th>
+                                @for (int j = 1; j < Model.numDays + 1; j++)
+                                {
+                                    if (j > DateTime.Now.Day)
+                                    {
+                                        <td style="color:white">Notyet</td>}
+                                    else if (@Model.monthAttend[i][j] == true)
+                                    {
+                                        <td style="color:green">Present</td>}
+                                    else
+                                    {
+                                        <td style="color:red">Absent</td>}
+                                }
+                            </tr>
                         }
-                    </tr>
-                }
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
+<div class="panel panel-widget forms-panel" style="width: 50%; display: inline-block">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>Working status</h3>
+            </div>
+            <div class="form-body" style="padding:0px;">
+                <div id="graph" style="border:none"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="agile-grids">
-    <div class="col-md-4 charts-right">
-        <!-- area-chart -->
-        <div class="area-grids">
-            <div class="area-grids-heading">
+<div class="panel panel-widget forms-panel" style="min-height: 440px; width: 48%; display: inline-block; float:right">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>Absent status</h3>
+            </div>
+            <div class="form-body" style="padding:10px; padding-left:30px">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-widget forms-panel" style="width: 35%; display: inline-block; min-height:240px">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
                 <h3>Device status</h3>
             </div>
-            <div>
+            <div class="form-body" style="padding:10px; padding-left:30px">
                 @foreach (var item in Model.listDevice)
                 {
                     if (item.device_status == 1)
@@ -70,20 +98,21 @@
                     }
                     else
                     {
-                        <p>@item.device_name is <a style="color:pink" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
+                        <p>@item.device_name is <a style="color:red" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
                     }
                 }
             </div>
         </div>
-        <!-- //area-chart -->
     </div>
-    <div class="col-md-8 chart-left">
-        <!-- updating-data -->
-        <div class="agile-Updating-grids">
-            <div class="area-grids-heading">
+</div>
+
+<div class="panel panel-widget forms-panel" style="width: 62%; display: inline-block; float:right">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
                 <h3>Log Attend (<span><a href="@Url.Action("ExportLOGPage", "Admin")">Export here</a></span>)</h3>
             </div>
-            <div>
+            <div class="form-body" style="padding:10px; padding-left:30px">
                 @foreach (var item in Model.listAttent)
                 {
                     <p><a href="@Url.Action("Profile", "Users", new {@userID = item.user_id})">@item.fullname</a> attend at "@item.location" at @item.log_time</p>
@@ -91,5 +120,517 @@
             </div>
         </div>
     </div>
-    <div class="clearfix"> </div>
 </div>
+
+
+<script>
+    $(function () {
+        $('#graph').graphify({
+            //options: true,
+            start: 'linear',
+            obj: {
+                id: 'ggg',
+                width: 520,
+                height: 305,
+                xGrid: false,
+                legend: true,
+                title: 'Present/Absent',
+                points: [
+                    [@(Model.countAttent[6]),@(Model.countAttent[5]),@(Model.countAttent[4]),@(Model.countAttent[3]),@(Model.countAttent[2]),@(Model.countAttent[1]),@(Model.countAttent[0])],
+                    [@(Model.countAbsent[6]),@(Model.countAbsent[5]),@(Model.countAbsent[4]),@(Model.countAbsent[3]),@(Model.countAbsent[2]),@(Model.countAbsent[1]),@(Model.countAbsent[0])]
+                ],
+                pointRadius: 3,
+                colors: ['green', 'red'],
+                xDist: 65,
+                dataNames: ['Pre', 'Abs'],
+                xName: 'Day',
+                tooltipWidth: 10,
+                animations: true,
+                pointAnimation: true,
+                averagePointRadius: 10,
+                design: {
+                    tooltipColor: '#fff',
+                    gridColor: 'grey',
+                    tooltipBoxColor: 'green',
+                    averageLineColor: 'green',
+                    pointColor: 'green',
+                    lineStrokeColor: 'grey',
+                }
+            }
+        });
+    });
+
+    var Graph = Graph || (function ($) {
+        var Private = {};
+        Private.count = 0;
+        var Graph = function (obj) {
+            if (obj !== 0) {
+                Private.setOptions.call(this, obj);
+                ++Private.count;
+            }
+        };
+        Private.defaults = function () {
+            return {
+                //default options
+                x: [@(Model.countDate[6]),@(Model.countDate[5]),@(Model.countDate[4]),@(Model.countDate[3]),@(Model.countDate[2]),@(Model.countDate[1]),@(Model.countDate[0])],
+                y: 10,
+                attachTo: 'body',
+                points: [0, 26, 33, 74, 12, 49, 18]
+            };
+        };
+        //important stuff you might want automatically
+        Private.basics = function (height, width, graphHeight, graphWidth) {
+            //basically, if no graph height/width is given we just make it equal the svg height/width
+            height = graphHeight || height || 300;
+            width = graphWidth || width || 550;
+            //make sure we can take substring
+            height = height.toString();
+            width = width.toString();
+            //so we can let them use percentages, we need the CSS of container
+            Private.attachTo = Private.attachTo || 'body';
+            var containerHeight = $(Private.attachTo).css('height');
+            var containerWidth = $(Private.attachTo).css('width');
+            //if its a percentage they probably mean fill the container, so use it
+            height = (height.substring(height.length - 1) === '%') ? containerHeight : height;
+            width = (width.substring(width.length - 1) === '%') ? containerWidth : width;
+            return {
+                //if user inputed a % or px, chop it off with parseFloat
+                Gheight: parseFloat(height),
+                Gwidth: parseFloat(width),
+                //Distances between lines
+                xDist: 60,
+                yDist: 30,
+                scale: 2,
+                //leave space for labels:
+                xOffset: 25,
+                yOffset: 20,
+                yStart: 0, // what number do we want to start from for y labels
+                mainOffset: 35, //to seperate everything from the ylabels
+                padding: 10, //keep labels from touching edges
+                //single points
+                xOfPoints: [], //get x and y coordinates of points
+                yOfPoints: [],
+                //multiple points
+                mxOfPoints: [],
+                myOfPoints: [],
+                multipleDataSets: false,
+                legend: false,
+                interactive: true,
+                animations: false,
+                animationDuration: 1,
+                pointAnimation: true,
+                lineAnimation: true,
+                barAnimation: true,
+                pieAnimation: true,
+                grid: true,
+                xGrid: true,
+                yGrid: true,
+                xName: null,
+                yName: null,
+                special: null,
+                showPoints: true,
+                noLines: false,
+                pointRadius: 5,
+                averagePointRadius: 5,
+                pieSize: 200,
+                tooltipWidth: 50,
+                pieLegend: true,
+                rx: 10, //tooltip roundedness
+                //add some html before append
+                before: '',
+                //after append:
+                after: '',
+                title: '', //title of graph to be written in SVG
+                id: 'SVGGraph' + Private.count
+            };
+        };
+        //create jquery css header
+        Private.parseS = function (id, then) {
+            return 'svg[id="' + id + '"] ' + then;
+        };
+        //turn an id into jQuery selector format
+        Private.id2selector = function (id) {
+            var stuff = id.split(' '); //split into components
+            id = stuff[0]; //only want the first word (id)
+            var selector = 'svg[id="';
+            if (id.charAt(0) === '#') { //make sure it's an id
+                selector += id.substring(1) + '"]';
+                //append everything else to the end
+                for (var i = 1, len = stuff.length; i < len; ++i) {
+                    selector += ' ' + stuff[i];
+                }
+            } else {
+                return id;
+            }
+            return selector;
+        };
+        Private.design = function (obj) {
+            //first way to style is by creating an object representing the CSS
+            obj.byCSS = obj.byCSS || {};
+            //second way to style something is by modifying default design
+            obj.design = obj.design || {};
+            var xAnchor = (obj.type === 'bar') ? 'start' : 'middle';
+            //which replaces defaults below
+            var height = obj.height || '100%';
+            var width = obj.width || '100%';
+            var self = obj.design;
+            var styling = {};
+            styling.style = {};
+            styling.style[this.parseS(obj.id, '')] = {
+                "height": height,
+                "width": width
+            };
+            styling.style[this.parseS(obj.id, '.grid')] = {
+                "stroke": self.gridColor || "#000",
+                "stroke-width": self.gridWidth || "1"
+            };
+            styling.style[this.parseS(obj.id, '.points')] = {
+                "cursor": 'pointer'
+            };
+            styling.style[this.parseS(obj.id, 'circle:not(".middle"):not(".pie-tooltip")')] = {
+                "opacity": 0.8
+            };
+            styling.style[this.parseS(obj.id, '.inset')] = {
+                "fill": self.pointColor || "lightblue"
+            };
+            styling.style[this.parseS(obj.id, '.labels')] = {
+                "fill": self.labelColor || "#000",
+                "stroke": self.labelStroke || "none",
+                "font-family": self.labelFont || "Arial",
+                "font-size": self.labelFontSize || "13px",
+                "kerning": self.labelKerning || "2"
+            };
+            styling.style[this.parseS(obj.id, '.lines')] = {
+                "stroke": self.lineColor || "darkgrey",
+                "stroke-width": self.lineWidth || "2"
+            };
+            styling.style[this.parseS(obj.id, '.averageLine')] = {
+                "stroke": self.averageLineColor || "green",
+                "stroke-width": self.lineWidth || "2"
+            };
+            styling.style[this.parseS(obj.id, '.line-of-1')] = {
+                "stroke": self.lineColor || "green",
+                "stroke-width": self.lineWidth || "2"
+            };
+            styling.style[this.parseS(obj.id, '.rect')] = {
+                "stroke": self.borderColor || "#fff",
+                "stroke-width": self.borderWidth || "2",
+                'fill': self.barColor || 'blue',
+                'opacity': 0.8
+            };
+            styling.style[this.parseS(obj.id, '.bar')] = {
+                "stroke": self.barBorder || "#fff",
+                'opacity': 0.8
+            };
+            styling.style[this.parseS(obj.id, '.SVG-tooltip')] = {
+                "fill": self.tooltipColor || "#000",
+                "font-family": self.tooltipFont || "Arial",
+                "font-size": self.tooltipFontSize || "13px",
+                "display": 'none',
+                "opacity": '1'
+            };
+            styling.style[this.parseS(obj.id, '.SVG-tooltip-box')] = {
+                "display": 'none',
+                "fill": self.tooltipBoxColor || "none",
+                "stroke": self.borderColor || "none",
+                "stroke-width": self.borderWidth || "2",
+            };
+            styling.style[this.parseS(obj.id, '.area')] = {
+                "stroke": (!obj.multipleDataSets) ? (self.lineColor || "green") : 'none',
+                "stroke-width": self.borderWidth || "2",
+                "fill": self.areaColor || 'none',
+                "opacity": 0.8
+            };
+            styling.style[this.parseS(obj.id, '.middle')] = {
+                "fill": self.donutCenterColor || '#fff',
+            };
+            styling.style[this.parseS(obj.id, '.slice')] = {
+                "stroke": self.borderColor || "grey",
+                "stroke-width": self.borderWidth || "2",
+                "opacity": "0.8"
+            };
+            styling.style[this.parseS(obj.id, '.labels.x-labels')] = {
+                "text-anchor": self.xLabelAnchor || xAnchor
+            };
+            styling.style[this.parseS(obj.id, '.labels.y-labels')] = {
+                "text-anchor": self.yLabelAnchor || "end"
+            };
+            styling.style['table[id="' + obj.id + '"]'] = {
+                "height": height,
+                "width": width,
+                "border-collapse": 'collapse',
+                "text-align": 'center'
+            };
+            //when using multiple lines make them different colors automatically
+            var colors = obj.colors || ['red', 'blue', 'green', 'orange', 'purple', 'yellow', 'brown', 'gold', 'black', 'grey'];
+            colors.push(''); //so bar spaces dont takeup colors
+            for (var i = 0, len = colors.length; i < len; ++i) {
+                styling.style[this.parseS(obj.id, '.line-of-' + i)] = {
+                    "stroke": self.lineColor || colors[i],
+                    "stroke-width": self.lineWidth || "2"
+                };
+                styling.style[this.parseS(obj.id, '.path-of-' + i)] = {
+                    "fill": colors[i],
+                    "opacity": 0.8
+                };
+                styling.style[this.parseS(obj.id, '.rect-of-' + i)] = {
+                    "fill": colors[i]
+                };
+                styling.style[this.parseS(obj.id, '.point-of-' + i)] = {
+                    "fill": colors[i]
+                };
+            }
+            //for styling completely with your own object
+            for (var name in obj.byCSS) {
+                //make sure id is in proper form
+                styling.style[this.id2selector(name)] = obj.byCSS[name]; //make styling = users object
+            }
+            return styling;
+        };
+        //decide between basics, defaults, styling; make obj a property of "this"; add some variables
+        Private.setOptions = function (obj) {
+            obj = obj || {};
+            if (obj.points && $.isArray(obj.points[0])) obj.multipleDataSets = true;
+            if (obj.attachTo) {
+                obj.attachTo = (obj.attachTo.charAt(0) === '#') ? obj.attachTo : '#' + obj.attachTo; //make hash optional (attchTo)
+                Private.attachTo = obj.attachTo; //for basics(), which cant access this.obj.attachTo in time
+            }
+            if (obj.id) obj.id = (obj.id.charAt(0) === '#') ? obj.id.substring(1) : obj.id; //make hash optional (id)
+            //do basic setup automatically (unless user chooses not to)
+            if (obj.basic === true || typeof obj.basic === 'undefined') {
+                this.obj = Private.basics(obj.height, obj.width, obj.graphHeight, obj.graphWidth);
+            }
+            //merge with defaults (some example content)
+            if ((obj && obj.example === true) || !$.isEmptyObject(obj)) { //if example chosen or no options given
+                obj.id = obj.id || this.obj.id;
+                //everything user did not specify is filled with defaults + basics + style
+                //style needs id passed in so it can be replaced from basics().id
+                $.extend(this.obj, Private.defaults(), obj, Private.design(obj)); //ORDER MATTERS WITH $.EXTEND
+                this.obj.addStyle = true;
+            } else if (obj && obj.addStyle === true) { //only add styling
+                $.extend(this.obj, Private.design(obj), obj);
+            } else if (obj) { //if user wants nothing done for them just rely only on the object they give
+                this.obj = obj; //only use given args
+            }
+            //lets add some repetitive length vars to the object to reduce calculations
+            this.obj.numPoints = this.obj.points.length;
+            this.obj.xLength = this.obj.x.length;
+        };
+        Graph.prototype.getData = function () { //save a graph as stringified JSON (can expand later)
+            return JSON.stringify(this.obj);
+        };
+        Graph.prototype.genToFunc = function (str) {
+            //turn generic string into function name
+            str = (str === 'area') ? 'linear' : ((str === 'combo') ? 'bar' : ((str === 'donut') ? 'pie' : str));
+            return 'Graph' + str.charAt(0).toUpperCase() + str.substring(1);
+        };
+        Graph.prototype.expand = function (obj, thing) { //expand JSON into a graph (requires 'type' property of 'obj')
+            obj = (typeof obj === 'string') ? jQuery.parseJSON(obj) : obj; //if in string form parse it
+            var graph = new window[this.genToFunc(this.obj.type)](obj);
+            thing = thing || '';
+            graph.init(thing);
+        };
+        Graph.prototype.update = function (obj) { //recall script file to update graph with new obj
+            obj = obj || {};
+            obj.byCSS = this.obj.byCSS;
+            //reset options with new stuff
+            this.expand(obj, 'update'); //recreate graph
+        };
+        //turn one type of graph into another  (can also make changes with obj)
+        Graph.prototype.to = function (what, newObj) {
+            //update graph as a new type
+            var ret = newObj || this.obj;
+            this.obj.type = what;
+            ret.type = what;
+            this.expand(ret, 'update');
+        };
+        Graph.prototype.createGrid = function (xLines, yLines) {
+            var self = this.obj;
+            var xGrid = '',
+                yGrid = '',
+                weird = self.yDist - 30;
+            //make sure they want the grid
+            if (self.grid && !self.noLines) {
+                //save final x of xlines so ylines dont pass that boundary
+                var finalY = (self.height) - yLines * (self.yDist);
+                var nxt;
+                //X-GRID LINES
+                if (self.xGrid) {
+                    for (var i = 0; i < xLines; ++i) {
+                        //x1 and x2 must be the same (dist. from left),
+                        //start at very top (y1 = 0), all the way to the bottom (y = height)
+                        nxt = i * self.xDist + self.mainOffset;
+                        xGrid += '<line x1="' + nxt + '" x2="' + nxt + '" y1="' + (self.height - self.yOffset - self.padding - weird) +
+                            '" y2="' + (finalY) + '"></line>';
+                    }
+                }
+                var finalX = (xLines - 1) * self.xDist + self.mainOffset;
+                //Y-GRID LINES
+                if (self.yGrid) {
+                    for (var i = 1; i <= yLines; ++i) {
+                        //y1 and y2 must be the same (dist. from top),
+                        //ALL x1's & x2's must be the same so we start at same dist. from left & right
+                        nxt = (self.height) - i * (self.yDist);
+                        //finalX need not be added to mainoffset because nxt already accounts for it mathematically
+                        yGrid += '<line x1="' + self.mainOffset + '" x2="' + (finalX) + '" y1="' + nxt + '" y2="' + nxt + '"></line>';
+                    }
+                }
+            } else {
+                //leave the first vert. and horiz. line for them for obvious styling purposes
+                //they still have the option to remove this with noLines
+                if (self.noLines === false) {
+                    xGrid += '<line x1="' + self.mainOffset + '" x2="' + self.mainOffset +
+                        '" y1="' + (self.height - self.yOffset - self.padding - weird) + '" y2="' + ((self.height) - yLines * (self.yDist)) + '"></line>';
+                    yGrid += '<line x1="' + self.mainOffset + '" x2="' + ((xLines - 1) * self.xDist + self.mainOffset) +
+                        '" y1="' + (self.height - self.yDist) + '" y2="' + (self.height - self.yDist) + '"></line>';
+                }
+            }
+            return {
+                xGrid: xGrid,
+                yGrid: yGrid
+            };
+        };
+        Graph.prototype.applyStyling = function () {
+            //Add CSS as value for every key in style
+            var self = this.obj;
+            if (self.addStyle) {
+                for (var i in self.style) {
+                    $(i).css(self.style[i]);
+                }
+            }
+        };
+        //initialize global tags
+        Graph.prototype.openTags = function () {
+            return {
+                SVG: '<svg id="' + this.obj.id + '"class="graph"style="' + (this.obj.css || '') + '">', //begin all groups
+                xGrid: '<g class="grid x-grid" id="xGrid">',
+                yGrid: '<g class="grid y-grid" id="yGrid">',
+                xLabels: '<g class="labels x-labels">',
+                yLabels: '<g class="labels y-labels">',
+                title: '<g class="labels title">'
+            };
+        };
+        //add X and Y labels to graph
+        Graph.prototype.addLabels = function () {
+            var self = this.obj;
+            var xLabels = '',
+                yLabels = '';
+            //xLABELS
+            for (var i = 0, len = self.xLength; i < len; ++i) {
+                xLabels += '<text x="' + (i * self.xDist + self.mainOffset) + '" y="' +
+                    (self.height - self.padding) + '">' + self.x[i] + '</text>';
+            }
+            //yLABELS
+            for (var i = 1, len = self.y + 1; i <= len; ++i) {
+                var digit = (i * self.scale - self.scale + self.yStart); //get multiple of scale as number displayed
+                var x = (digit >= 10) ? self.xOffset : self.xOffset - 10; //clean it up: move 1 digit numbers 1 place to the left
+                //y subtracted from height to invert graph
+                yLabels += '<text x="' + x + '" y="' + ((self.height - (self.yDist * i - self.padding)) - 5) +
+                    '">' + digit + '</text>';
+            }
+            return {
+                xLabels: xLabels,
+                yLabels: yLabels
+            };
+        };
+        Graph.prototype.addTitle = function (yLines) {
+            var self = this.obj;
+            return '<text x="' + (self.mainOffset) + '" y="' +
+                ((self.height) - yLines * (self.yDist) - self.yOffset) +
+                '"font-weight="bold">' + self.title + '</text>';
+        };
+        //close all tags, include grid & labels, append to DOM, and add styling (SVG only
+        Graph.prototype.finishGraph = function (xLines, yLines, E, thing) {
+            var self = this.obj;
+            if (self.type !== 'pie') {
+                //build grid
+                E.xGrid += this.createGrid(xLines, yLines).xGrid;
+                E.yGrid += this.createGrid(xLines, yLines).yGrid;
+                //LABELS
+                E.xLabels += this.addLabels().xLabels;
+                E.yLabels += this.addLabels().yLabels;
+            }
+            E.title += this.addTitle(yLines);
+            if ((self.legend && self.pieLegend) || self.type === 'pie') E.legend = this.addLegend(thing);
+            //COMBINING DYNAMICALLY
+            E.points = E.points || '';
+            for (var i in E) {
+                if (E[i] !== E.points && E[i] !== E.tooltips) { //so we can add last to increase z-index
+                    if (i !== 'SVG') E.SVG += E[i] + '</g>';
+                }
+            }
+            E.SVG += E.points + E.tooltips + '</svg>';
+            //"thing" will determine where to put the new graph
+            var finish = self.before + E.SVG + self.after;
+            this.handleAppend(thing, finish);
+            //STYLING
+            this.applyStyling();
+            return E.SVG;
+        };
+        Graph.prototype.handleAppend = function (thing, finish) {
+            if (thing === 'update') $('#' + this.obj.id).replaceWith(finish); //replace old graph with this one
+            else $(this.obj.attachTo).append(finish);
+        };
+        Graph.prototype.addLegend = function () {
+            var self = this.obj;
+            var hoverHandle = function (what) {
+                var to = (what === 'add') ? 1 : 0.8;
+                var clas = $(this).attr('class').substring(7);
+                var selector = '[class*="' + clas + '"][id^="' + $(this).attr('id').split('-')[1] + '"]';
+                $('line' + selector + ', rect' + selector + ', path' + selector).each(function () {
+                    $(this).css('opacity', to);
+                });
+            };
+            if (self.interactive && self.multipleDataSets) {
+                $(document).on('mouseover', 'g[id^="legend-"]', function () {
+                    hoverHandle.call(this, 'add');
+                });
+                $(document).on('mouseout', 'g[id^="legend-"]', function () {
+                    hoverHandle.call(this, 'take');
+                });
+            }
+            var legend = '<g class="legend">';
+            var x = self.legendX || (self.Gwidth - self.xDist);
+            var width = 30; //width of rect
+            var height = 30;
+            var y = self.yOffset;
+            self.dataNames = self.dataNames || [];
+            if (self.multipleDataSets || self.type === 'pie') {
+                for (var i = 0, len = self.numPoints; i < len; ++i) {
+                    legend += '<g id="legend-' + self.id + '"class="legend-of-' + i + '">';
+                    //RECT
+                    legend += '<rect class="rect-of-' + i + '"x="' + (x) +
+                        '" y="' + (y) + '"width="' + width + '"height="' + height + '"></rect>';
+                    //TEXT
+                    legend += '<text style="cursor:default;"class="legend-of-' + i + '"x="' + (x + width + 5) +
+                        '"y="' + (y + height / 2) + '">' + (self.dataNames[i] || 'Data' + (i === 0 ? '' : ' ' + i)) + '</text>';
+                    y += self.yDist + self.padding;
+                }
+            } else {
+                for (var i = 0, len = self.xLength; i < len; ++i) {
+                    legend += '<g id="legend-' + self.id + '">';
+                    //TEXT
+                    legend += '<text style="cursor:default;"x="' + (1.5 * x) +
+                        '"y="' + (y + height / 2) + '">' + (self.x[i] + " : " + self.points[i]) + '</text>';
+                    y += self.yDist + self.padding;
+                }
+            }
+            //we'll need a section for the average line for combo graphs
+            if (self.special === 'combo') {
+                legend += '<g id="legend-avg-' + self.id + '">';
+                //RECT
+                legend += '<rect fill="' + (self.design.averageLineColor || 'green') + '"class="averageLine"x="' + (x) +
+                    '" y="' + (y) + '"width="' + width + '"height="' + height + '"></rect>';
+                //TEXT
+                legend += '<text style="cursor:default;"x="' + (x + width + 5) +
+                    '"y="' + (y + height / 2) + '">' + 'Average' + '</text>';
+            }
+            legend += '</g>';
+            return legend;
+        };
+        return Graph;
+    })(jQuery);
+</script>
+<script src="~/Scripts/graph.js"></script>
+
+

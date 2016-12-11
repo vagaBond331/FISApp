@@ -91,6 +91,7 @@ namespace FISApp.Controllers
             pr.address = logUser.address;
             pr.email = logUser.mail;
             pr.user_type = logUser.user_type;
+            pr.status = logUser.status;
 
             return pr;
         }

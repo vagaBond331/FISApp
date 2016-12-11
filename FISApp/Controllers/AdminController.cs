@@ -42,7 +42,61 @@ namespace FISApp.Controllers
                 model.listAttent.Add(at);
             }
 
+            model.countAttent = countAttent();
+            model.countAbsent = countAbsent(model.countAttent);
+            model.countDate = countDate();
+
             return View(model);
+        }
+
+        public string[] countDate()
+        {
+            string[] countDate = new string[7];
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime day = DateTime.Today.AddDays(-i);
+                countDate[i] = day.Month + "." + day.Day;
+            }
+            return countDate;
+        }
+
+        public int[] countAttent()
+        {
+            int[] at = new int[7];
+            List<Attent> list = db.Attents.ToList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Attent item = list[i];
+                if (db.Users.Find(item.attent_user).user_type == 1)
+                {
+                    list.Remove(item);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < at.Length; i++)
+            {
+                DateTime day = DateTime.Today.AddDays(-i);
+                List<Attent> list2 = new List<Attent>();
+                for (int j = 0; j < list.Count; j++)
+                {
+                    if (list[j].attent_time.ToShortDateString().Equals(day.ToShortDateString())) list2.Add(list[j]);
+                }
+                at[i] = list2.GroupBy(o => o.attent_user).Select(g => new { Name = g.Key, Count = g.Count() }).Count();
+            }
+            return at;
+        }
+
+        public int[] countAbsent(int[] at)
+        {
+            int[] ab = new int[7];
+            int emp = db.Users.Where(o => o.user_type != 1).ToList().Count();
+            for (int i = 0; i < 7; i++)
+            {
+                ab[i] = emp - at[i];
+            }
+
+            return ab;
         }
 
         public bool[] checkAttend(User us, int month)

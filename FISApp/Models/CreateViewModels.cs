@@ -19,7 +19,7 @@ namespace FISApp.Models
         public string password { get; set; }
 
         [Display(Name = "Fullname")]
-        [Required]
+        [Required(ErrorMessage = "The Fullname field is required.")]
         public string full_name { get; set; }
 
         [Required]

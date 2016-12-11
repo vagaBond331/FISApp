@@ -44,6 +44,9 @@ namespace FISApp.Models
         [Display(Name = "Email")]
         public string email { get; set; }
 
+        [Display(Name = "Status")]
+        public Nullable<int> status { get; set; }
+
         public Nullable<int> user_type { get; set; }
 
         [Display(Name = "Avatar")]
