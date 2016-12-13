@@ -54,6 +54,23 @@ namespace FISApp.Models
 
         [Display(Name = "Fingerprint Image")]
         public string finger_image { get; set; }
+    }
 
+    public class ChangePassword
+    {
+        [Required]
+        [Display(Name = "Old password")]
+        [DataType(DataType.Password)]
+        public string oldPass { get; set; }
+
+        [Required]
+        [Display(Name = "New password")]
+        [DataType(DataType.Password)]
+        public string newPass { get; set; }
+
+        [Required]
+        [Display(Name = "Repeat new password")]
+        [DataType(DataType.Password)]
+        public string newPass2 { get; set; }
     }
 }

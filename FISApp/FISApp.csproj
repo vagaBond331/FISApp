@@ -201,7 +201,7 @@
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HttpRequestController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +265,9 @@
     <Content Include="Content\lsb.css" />
     <Content Include="Content\monthly.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\profile-owl.carousel.css" />
+    <Content Include="Content\profile-style2.css" />
+    <Content Include="Content\profile-style.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\table-component.css" />
     <Content Include="Content\table-demo.css" />
@@ -365,6 +368,7 @@
     <Content Include="Views\Users\ListProfile.cshtml" />
     <Content Include="Views\Users\Profile.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

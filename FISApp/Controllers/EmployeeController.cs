@@ -20,7 +20,11 @@ namespace FISApp.Controllers
 
             model.monthAttend = checkAttend(DateTime.Now.Month, model);
             string userID = Session["logUserID"].ToString();
-            foreach (var item in db.Attents.Where(u => u.attent_user.Equals(userID)))
+
+            List<Attent> atList = db.Attents.Where(u => u.attent_user.Equals(userID)).OrderBy(t => t.attent_time).ToList();
+            atList = Enumerable.Reverse(atList).Take(5).ToList();
+
+            foreach (var item in atList)
             {
                 AttendViewModel at = new AttendViewModel();
                 User us = db.Users.Find(item.attent_user);

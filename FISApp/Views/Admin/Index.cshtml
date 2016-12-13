@@ -3,11 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/table-component.css" rel="stylesheet" />
-<link href="~/Content/table-demo.css" rel="stylesheet" />
-<link href="~/Content/table-normalize.css" rel="stylesheet" />
-<script src="~/Scripts/jquery.stickyheader.js"></script>
-<script src="~/Scripts/jquery.ba-throttle-debounce.min.js"></script>
 
 <div class="panel panel-widget forms-panel">
     <div class="forms">
@@ -34,7 +29,7 @@
                         {
                             <tr>
                                 <th>
-                                    <span>@Model.empListName[i]</span>
+                                    <a style="color:black" href="@Url.Action("Profile", "Users", new {@userID = Model.empListID[i]})">@Model.empListName[i]</a>
                                 </th>
                                 @for (int j = 1; j < Model.numDays + 1; j++)
                                 {
@@ -57,7 +52,7 @@
     </div>
 </div>
 
-<div class="panel panel-widget forms-panel" style="width: 50%; display: inline-block">
+<div class="panel panel-widget forms-panel" style="width: 62%; display: inline-block">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">
@@ -70,14 +65,25 @@
     </div>
 </div>
 
-<div class="panel panel-widget forms-panel" style="min-height: 440px; width: 48%; display: inline-block; float:right">
+<div class="panel panel-widget forms-panel" style="height: 440px;width: 35%; display: inline-block; float:right">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">
                 <h3>Absent status</h3>
             </div>
-            <div class="form-body" style="padding:10px; padding-left:30px">
-
+            <div class="form-body">
+                <div id="graph4"></div>
+                <script>
+                    Morris.Donut({
+                        element: 'graph4',
+                        data: [
+                          { value: 10, label: 'Attent', formatted: '10% at 12/2016' },
+                          { value: 55, label: 'Absent', formatted: '50% at 12/2016' },
+                          { value: 40, label: 'Not yet', formatted: 'about 40%' }
+                        ],
+                        formatter: function (x, data) { return data.formatted; }
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -130,18 +136,18 @@
             start: 'linear',
             obj: {
                 id: 'ggg',
-                width: 520,
+                width: 680,
                 height: 305,
                 xGrid: false,
                 legend: true,
                 title: 'Present/Absent',
                 points: [
-                    [@(Model.countAttent[6]),@(Model.countAttent[5]),@(Model.countAttent[4]),@(Model.countAttent[3]),@(Model.countAttent[2]),@(Model.countAttent[1]),@(Model.countAttent[0])],
-                    [@(Model.countAbsent[6]),@(Model.countAbsent[5]),@(Model.countAbsent[4]),@(Model.countAbsent[3]),@(Model.countAbsent[2]),@(Model.countAbsent[1]),@(Model.countAbsent[0])]
+                    [@(Model.countAttent[9]),@(Model.countAttent[8]),@(Model.countAttent[7]),@(Model.countAttent[6]),@(Model.countAttent[5]),@(Model.countAttent[4]),@(Model.countAttent[3]),@(Model.countAttent[2]),@(Model.countAttent[1]),@(Model.countAttent[0])],
+                    [@(Model.countAbsent[9]),@(Model.countAbsent[8]),@(Model.countAbsent[7]),@(Model.countAbsent[6]),@(Model.countAbsent[5]),@(Model.countAbsent[4]),@(Model.countAbsent[3]),@(Model.countAbsent[2]),@(Model.countAbsent[1]),@(Model.countAbsent[0])]
                 ],
                 pointRadius: 3,
                 colors: ['green', 'red'],
-                xDist: 65,
+                xDist: 60,
                 dataNames: ['Pre', 'Abs'],
                 xName: 'Day',
                 tooltipWidth: 10,
@@ -172,7 +178,7 @@
         Private.defaults = function () {
             return {
                 //default options
-                x: [@(Model.countDate[6]),@(Model.countDate[5]),@(Model.countDate[4]),@(Model.countDate[3]),@(Model.countDate[2]),@(Model.countDate[1]),@(Model.countDate[0])],
+                x: [@(Model.countDate[9]),@(Model.countDate[8]),@(Model.countDate[7]),@(Model.countDate[6]),@(Model.countDate[5]),@(Model.countDate[4]),@(Model.countDate[3]),@(Model.countDate[2]),@(Model.countDate[1]),@(Model.countDate[0])],
                 y: 10,
                 attachTo: 'body',
                 points: [0, 26, 33, 74, 12, 49, 18]
@@ -631,6 +637,5 @@
         return Graph;
     })(jQuery);
 </script>
-<script src="~/Scripts/graph.js"></script>
 
 

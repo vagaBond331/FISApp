@@ -44,6 +44,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--skycons-icons-->
     <script src="~/Scripts/skycons.js"></script>
     <!--//skycons-icons-->
+
+    <link href="~/Content/table-component.css" rel="stylesheet" />
+    <link href="~/Content/table-demo.css" rel="stylesheet" />
+    <link href="~/Content/table-normalize.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.stickyheader.js"></script>
+    <script src="~/Scripts/jquery.ba-throttle-debounce.min.js"></script>
 </head>
 <body class="dashboard-page">
     <script>
@@ -155,8 +161,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu drp-mnu">
-                                    <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                                    <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+                                    <li> <a href="@Url.Action("ChangePassword", "Users")"><i class="fa fa-cog"></i> Change pass</a> </li>
+                                    <li> <a href="@Url.Action("Profile", "Users")"><i class="fa fa-user"></i> Profile</a> </li>
                                     <li> <a href="@Url.Action("Logout", "Users")"><i class="fa fa-sign-out"></i> Logout</a> </li>
                                 </ul>
                             </li>
@@ -171,6 +177,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             @RenderBody()
         </div>
         <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/graph.js"></script>
         <!-- footer -->
         <div class="footer">
             <p>© 2016 Colored . All Rights Reserved . Created </a></p>

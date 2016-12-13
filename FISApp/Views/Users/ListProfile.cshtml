@@ -4,186 +4,198 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="social grid">
-    <div class="grid-info">
-        <table class="table">
-            <tr colspan="5">
-                <th style="font-size:1.5em; border-top:none">List manager</th>
-            </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.userID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.position)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                if (item.user_type == 2 && item.status == 1)
-                {
+<div class="panel panel-widget forms-panel">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>List manager</h3>
+            </div>
+            <div class="form-body" style="padding:0px">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.userID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.position)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            <a style="color:green" href="#" onclick="changeStt()">Active</a>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.userID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
-        </table>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.user_type == 2 && item.status == 1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.userID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    <a style="color:green" href="#" onclick="changeStt()">Active</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="social grid">
-    <div class="grid-info">
-        <table class="table">
-            <tr colspan="5">
-                <th style="font-size:1.5em; border-top:none">List employee</th>
-            </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.userID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.position)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                if (item.user_type == 3 && item.status == 1)
-                {
+<div class="panel panel-widget forms-panel">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>List employee</h3>
+            </div>
+            <div class="form-body" style="padding:0px">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.userID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.position)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            <a style="color:green" href="#" onclick="changeStt()">Active</a>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.userID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
-        </table>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.user_type == 3 && item.status == 1)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.userID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    <a style="color:green" href="#" onclick="changeStt()">Active</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="social grid">
-    <div class="grid-info">
-        <table class="table">
-            <tr colspan="5">
-                <th style="font-size:1.5em; border-top:none">List deactive person</th>
-            </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.userID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.position)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                if (item.status == 0)
-                {
+<div class="panel panel-widget forms-panel">
+    <div class="forms">
+        <div class="form-grids widget-shadow" data-example-id="basic-forms">
+            <div class="form-title">
+                <h3>List deactive person</h3>
+            </div>
+            <div class="form-body" style="padding:0px">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.userID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.position)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            <a style="color:red" href="#" onclick="changeStt()">Deactive</a>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.userID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
-        </table>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.status == 0)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.userID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    <a style="color:red" href="#" onclick="changeStt()">Deactive</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

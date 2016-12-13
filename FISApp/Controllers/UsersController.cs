@@ -55,6 +55,38 @@ namespace FISApp.Controllers
             return RedirectToAction("Login", "Users");
         }
 
+        public ActionResult ChangePassword()
+        {
+            if (Session["logUserID"] == null) return RedirectToAction("Logout", "Users");
+            return View();
+        }
+
+        public ActionResult ConfirmPassword(ChangePassword model)
+        {
+            if (Session["logUserID"] == null) return RedirectToAction("Logout", "Users");
+
+            string oldPass = db.Users.Find(Session["logUserID"]).password;
+            if (model.oldPass.Equals(oldPass))
+            {
+                if (model.newPass.Equals(model.newPass2))
+                {
+                    db.Users.Find(Session["logUserID"]).password = model.newPass;
+                    db.SaveChanges();
+                    return RedirectToAction("ChangePassword", "Users");
+                }
+                else
+                {
+                    //TODO 2 new pass not same
+                    return RedirectToAction("ChangePassword", "Users");
+                }
+            }
+            else
+            {
+                //TODO wrong old pass
+                return RedirectToAction("ChangePassword", "Users");
+            }
+        }
+
         // GET: Users
         public ActionResult Profile(string userID)
         {

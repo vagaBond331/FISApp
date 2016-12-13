@@ -1,0 +1,154 @@
+ul.address li ul.address-text li {
+    display: inline-block;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+    ul.address li ul.address-text li:nth-child(1) {
+        width: 26%;
+    }
+
+ul.address {
+    margin-top: 1em;
+}
+
+ul.address-text b {
+    font-size: 1em;
+}
+
+ul.address-text {
+    padding: 0;
+}
+
+ul.address {
+    padding: 0;
+}
+
+ul.address {
+    margin-top: 2em;
+    border-top: 1px solid white;
+    padding-top: 0.5em;
+}
+
+    ul.address li {
+        display: block;
+    }
+
+        ul.address li ul.address-text li {
+            display: inline-block;
+            font-size: 1.1em;
+            color: #fff;
+            margin-top: 1em;
+            font-weight: 400;
+        }
+
+            ul.address li ul.address-text li:nth-child(1) {
+                width: 25%;
+            }
+
+            ul.address li ul.address-text li a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+                ul.address li ul.address-text li a:hover {
+                    color: #00a78e;
+                }
+
+ul.address-text b {
+    color: #fff;
+}
+
+.header-left {
+    padding: 3em;
+}
+
+.header-left img {
+    width: 100%;
+    margin-top: 19px;
+}
+
+
+.header-right h1 {
+    font-size: 2.5em;
+    color: #fff;
+    margin: 0.5em 0 0;
+    font-weight: bold;
+}
+
+.header-right h1 {
+    font-size: 1.2em;
+    color: #FFF;
+    background: #fcb216;
+    display: inline-block;
+    padding: .5em 1.5em;
+    position: relative;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.header-right h1:before {
+    width: 0;
+    height: 0;
+    position: absolute;
+    content: '';
+    bottom: -9px;
+    left: 12px;
+    border-style: solid;
+    border-width: 14px 11px 0 12px;
+    border-color: #fcb216 transparent transparent transparent;
+}
+
+.header-right h6 {
+    font-size: 1em;
+    color: white;
+    margin-top: 0.8em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+@media(max-width:991px) {
+    .header-left {
+        padding: 2em 2em 0em 0;
+        float: right;
+        width: 49%;
+    }
+
+    .header-right {
+        padding-left: 3em;
+        float: left;
+        width: 50%;
+        padding: 2em;
+    }
+}
+
+@media(max-width:480px) {
+    .header-left {
+        padding: 0em 1em 1em 1em;
+        float: right;
+        width: 100%;
+    }
+
+        .header-left img {
+            width: 100%;
+            margin-top: 3px;
+        }
+
+    .header-right {
+        padding-left: 0em;
+        float: left;
+        width: 100%;
+        padding: 1em 1em 0em 1em;
+    }
+
+        .header-right h1 {
+            font-size: 1em;
+            padding: .4em 1em;
+        }
+
+    .form-grids {
+        padding-left: 0em;
+        float: left;
+        width: 100%;
+        padding: 1em 1em 0em 1em;
+    }
+}

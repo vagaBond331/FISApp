@@ -8,6 +8,8 @@ namespace FISApp.Models
     {
         public User logUser { get; set; }
 
+        public List<string> empListID { get; set; }
+
         public List<string> empListName { get; set; }
 
         public List<bool[]> monthAttend { get; set; }
@@ -27,12 +29,13 @@ namespace FISApp.Models
         public AdminViewModels()
         {
             logUser = new User();
+            empListID = new List<string>();
             empListName = new List<string>();
             monthAttend = new List<bool[]>();
             numDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             listDevice = new List<Device>();
             listAttent = new List<AttendViewModel>();
-            countDate = new string[7];
+            countDate = new string[10];
         }
     }
 

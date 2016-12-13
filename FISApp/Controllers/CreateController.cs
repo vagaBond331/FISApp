@@ -77,7 +77,6 @@ namespace FISApp.Controllers
             {
                 return Content("Error! TODO Update Error view later");
             }
-
         }
 
         public void addEmpToDB(CreateEmployeeModel model)

@@ -33,7 +33,7 @@ namespace FISApp.Models
 
     public class Constants
     {
-        public static string defaultPassword = "123";
+        public static string defaultPassword = "123123";
         public static readonly string[] VietnameseSigns = new string[]
         {
             "aAeEoOuUiIdDyY",

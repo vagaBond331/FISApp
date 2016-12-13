@@ -22,6 +22,7 @@ namespace FISApp.Controllers
             {
                 if (item.user_type != 1)
                 {
+                    model.empListID.Add(item.user_id);
                     model.empListName.Add(item.full_name);
                     model.monthAttend.Add(checkAttend(item, DateTime.Now.Month));
                 }
@@ -51,8 +52,8 @@ namespace FISApp.Controllers
 
         public string[] countDate()
         {
-            string[] countDate = new string[7];
-            for (int i = 0; i < 7; i++)
+            string[] countDate = new string[10];
+            for (int i = 0; i < 10; i++)
             {
                 DateTime day = DateTime.Today.AddDays(-i);
                 countDate[i] = day.Month + "." + day.Day;
@@ -62,7 +63,7 @@ namespace FISApp.Controllers
 
         public int[] countAttent()
         {
-            int[] at = new int[7];
+            int[] at = new int[10];
             List<Attent> list = db.Attents.ToList();
             for (int i = 0; i < list.Count; i++)
             {
@@ -89,9 +90,9 @@ namespace FISApp.Controllers
 
         public int[] countAbsent(int[] at)
         {
-            int[] ab = new int[7];
+            int[] ab = new int[10];
             int emp = db.Users.Where(o => o.user_type != 1).ToList().Count();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 10; i++)
             {
                 ab[i] = emp - at[i];
             }
@@ -142,6 +143,13 @@ namespace FISApp.Controllers
         public FileContentResult ExportCSV(ExportLOGModel model)
         {
             List<Attent> atList = db.Attents.Where(t => (t.attent_time >= model.startDate && t.attent_time <= model.endDate)).ToList();
+            if (Session["logUserType"].Equals("3"))
+            {
+                foreach (var item in atList)
+                {
+                    if (!item.attent_user.Equals(Session["logUserID"])) atList.Remove(item);
+                }
+            }
             String csv = "ID,Name,Time,Location";
             foreach (var item in atList)
             {
