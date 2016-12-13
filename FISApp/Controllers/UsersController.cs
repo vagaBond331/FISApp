@@ -61,8 +61,10 @@ namespace FISApp.Controllers
             return View();
         }
 
-        public ActionResult ConfirmPassword(ChangePassword model)
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePassword model)
         {
+            ViewBag.Messages = "";
             if (Session["logUserID"] == null) return RedirectToAction("Logout", "Users");
 
             string oldPass = db.Users.Find(Session["logUserID"]).password;
@@ -72,7 +74,8 @@ namespace FISApp.Controllers
                 {
                     db.Users.Find(Session["logUserID"]).password = model.newPass;
                     db.SaveChanges();
-                    return RedirectToAction("ChangePassword", "Users");
+                    ViewBag.Messages = "Change success!";
+                    return View(model);
                 }
                 else
                 {
