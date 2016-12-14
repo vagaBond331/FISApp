@@ -269,6 +269,7 @@
     <Content Include="Content\profile-style2.css" />
     <Content Include="Content\profile-style.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="Content\table-component.css" />
     <Content Include="Content\table-demo.css" />
     <Content Include="Content\table-normalize.css" />
@@ -343,6 +344,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\screenfull.js" />
     <Content Include="Scripts\skycons.js" />
+    <Content Include="Scripts\sweetalert-dev.js" />
     <Content Include="Scripts\valida.2.1.6.min.js" />
     <Content Include="Scripts\validator.min.js" />
     <Content Include="Scripts\_references.js" />

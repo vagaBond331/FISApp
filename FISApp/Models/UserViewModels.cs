@@ -63,13 +63,15 @@ namespace FISApp.Models
         [DataType(DataType.Password)]
         public string oldPass { get; set; }
 
-        [Required]
         [Display(Name = "New password")]
+        [Required]
+        [StringLength(18, MinimumLength = 6, ErrorMessage = "Password must be from 6 to 18 characters!")]
         [DataType(DataType.Password)]
         public string newPass { get; set; }
 
-        [Required]
         [Display(Name = "Repeat new password")]
+        [Required]
+        [StringLength(18, MinimumLength = 6, ErrorMessage = "Password must be from 6 to 18 characters!")]
         [DataType(DataType.Password)]
         public string newPass2 { get; set; }
     }

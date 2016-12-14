@@ -68,6 +68,12 @@ namespace FISApp.Controllers
             if (Session["logUserID"] == null) return RedirectToAction("Logout", "Users");
 
             string oldPass = db.Users.Find(Session["logUserID"]).password;
+
+            if(model.newPass.Length < 6 || model.newPass.Length > 18 || model.newPass2.Length < 6 || model.newPass2.Length > 18)
+            {
+                return View(model);
+            }
+
             if (model.oldPass.Equals(oldPass))
             {
                 if (model.newPass.Equals(model.newPass2))
@@ -79,14 +85,14 @@ namespace FISApp.Controllers
                 }
                 else
                 {
-                    //TODO 2 new pass not same
-                    return RedirectToAction("ChangePassword", "Users");
+                    ViewBag.Messages = "Two new passwords are not same!";
+                    return View(model);
                 }
             }
             else
             {
-                //TODO wrong old pass
-                return RedirectToAction("ChangePassword", "Users");
+                ViewBag.Messages = "Old password is wrong!";
+                return View(model);
             }
         }
 

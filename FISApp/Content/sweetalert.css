@@ -179,7 +179,7 @@ body.stop-scrolling {
     -webkit-border-radius: 4px;
     border-radius: 5px;
     padding: 10px 32px;
-    margin: 26px 5px 0 5px;
+    margin: 0px 5px 0 5px;
     cursor: pointer; }
     .sweet-alert button:focus {
       outline: none;
