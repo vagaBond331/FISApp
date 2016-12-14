@@ -3,48 +3,9 @@
     ViewBag.Title = "UpdateEmpImage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/profile-style2.css" rel="stylesheet" />
 
-@*<div class="panel panel-widget forms-panel" style="width: 26.9%; display: inline-block">
-    <div class="forms">
-        <div class="form-grids widget-shadow" data-example-id="basic-forms">
-            <div class="form-title">
-                <h3>Avatar</h3>
-            </div>
-            <div>
-                @Html.TextBoxFor(model => model._avatar, new { type = "file", id = "_avatar", @class = "upload" })
-            </div>
-            <div class="form-body" style="padding:0px;">
-                <div class="form-group">
-                    <div class="col-md-5 header-left" style="padding:0px">
-                        <img height="300" width="300" src="@Model.avatar" id="imgavatar" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel panel-widget forms-panel" style="width: 26.9%; display: inline-block;">
-    <div class="forms">
-        <div class="form-grids widget-shadow" data-example-id="basic-forms">
-            <div class="form-title">
-                <h3>Fingerprint Image</h3>
-            </div>
-            <div class="form-body" style="padding:0px;">
-                <div class="form-group">
-                    <div class="col-md-5 header-left" style="padding:0px">
-                        <img height="300" width="300" src="@Model.finger_image_src" id="finger" />
-                    </div>
-                    <input type="submit" value="Refresh" onclick="return Validate();" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
-
-
-
-<div class="panel panel-widget forms-panel">
+<div class="panel panel-widget forms-panel" style="height: 613px;">
     <div class="forms" style="background-color: #00acc1;">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="col-md-7 header-right">
@@ -87,13 +48,23 @@
                             <li><a href="mailto:example@mail.com">@Model.profile.email</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <ul>
+                            <li style="display: inline-block;">
+                                <img height="150" width="150" src="@Model.finger_image_src" id="finger" />
+                            </li>
+                            <li style="display: inline;margin-left: 40px;">
+                                <button type="submit" value="Register" class="btn btn-default w3ls-button" id="btnRegis">Save</button>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-5 header-left">
                 @Html.TextBoxFor(model => model._avatar, new { type = "file", id = "_avatar", @class = "upload" })
                 <img src="@Model.avatar" id="imgavatar" />
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix" style="height: 593px;"> </div>
         </div>
     </div>
 </div>
@@ -103,7 +74,6 @@
 
 
 <script type="text/javascript">
-
     function Validate() {
         var s = $("#finger_image_src").val();
         if (s == "" || s == "/Images/User/default.jpg") {

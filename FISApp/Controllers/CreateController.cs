@@ -132,6 +132,7 @@ namespace FISApp.Controllers
             model.avatar = String.IsNullOrEmpty(user.avatar) ? "/Images/avatar.jpg" : user.avatar;
             model.finger_image_src = "/Images/User/default.jpg";
             model.user_id = user.user_id;
+            model.profile = userToProfile(user);
             return View(model);
         }
 
@@ -224,6 +225,23 @@ namespace FISApp.Controllers
                     str = str.Replace(Constants.VietnameseSigns[i][j], Constants.VietnameseSigns[0][i - 1]);
             }
             return str;
+        }
+
+        public Profile userToProfile(User logUser)
+        {
+            Profile pr = new Profile();
+            pr.userID = logUser.user_id;
+            pr.position = db.Positions.Find(logUser.pos_id).pos_displayed;
+            pr.name = logUser.full_name;
+            pr.DOB = logUser.DOB;
+            pr.phone = logUser.phone;
+            pr.department = logUser.department;
+            pr.address = logUser.address;
+            pr.email = logUser.mail;
+            pr.user_type = logUser.user_type;
+            pr.status = logUser.status;
+
+            return pr;
         }
     }
 }
