@@ -162,6 +162,11 @@ namespace FISApp.Controllers
                 if (user == null) return Content("Error");
                 model.finger_image_src = "~Image/User/default.jpg";
             }
+            if (user == null) return Content("Error");
+            model.avatar = String.IsNullOrEmpty(user.avatar) ? "/Images/avatar.jpg" : user.avatar;
+            model.finger_image_src = "/Images/User/default.jpg";
+            model.user_id = user.user_id;
+            model.profile = userToProfile(user);
             return View(model);
         }
 
