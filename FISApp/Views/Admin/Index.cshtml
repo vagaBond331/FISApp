@@ -112,7 +112,7 @@
     </div>
 </div>
 
-<div class="panel panel-widget forms-panel" style="width: 62%; display: inline-block; float:right">
+<div class="panel panel-widget forms-panel" id="logdiv" style="width: 62%; display: inline-block; float:right">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">
@@ -127,6 +127,16 @@
         </div>
     </div>
 </div>
+
+<script>
+	var updateLog = function () {
+		$("#logdiv ").load("Index #logdiv div");
+		setTimeout(updateLog, 5000);
+	};
+	$(document).ready(function () {
+		updateLog();
+	});
+</script>
 
 
 <script>
