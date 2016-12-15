@@ -19,7 +19,7 @@
                             </th>
                             @for (int i = 0; i < Model.numDays; i++)
                             {
-                                <th>@(i + 1)</th>
+                            <th>@(i + 1)</th>
                             }
                         </tr>
                     </thead>
@@ -27,23 +27,23 @@
                     <tbody>
                         @for (int i = 0; i < Model.empListName.Count; i++)
                         {
-                            <tr>
-                                <th>
-                                    <a style="color:black" href="@Url.Action("Profile", "Users", new {@userID = Model.empListID[i]})">@Model.empListName[i]</a>
-                                </th>
-                                @for (int j = 1; j < Model.numDays + 1; j++)
+                        <tr>
+                            <th>
+                                <a style="color:black" href="@Url.Action("Profile", "Users", new {@userID = Model.empListID[i]})">@Model.empListName[i]</a>
+                            </th>
+                            @for (int j = 1; j < Model.numDays + 1; j++)
                                 {
                                     if (j > DateTime.Now.Day)
                                     {
-                                        <td style="color:white">Notyet</td>}
+                                <td style="color:white">Notyet</td>}
                                     else if (@Model.monthAttend[i][j] == true)
                                     {
-                                        <td style="color:green">Present</td>}
+                                <td style="color:green">Present</td>}
                                     else
                                     {
-                                        <td style="color:red">Absent</td>}
+                                <td style="color:red">Absent</td>}
                                 }
-                            </tr>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div class="panel panel-widget forms-panel" style="width: 62%; display: inline-block">
+<div class="panel panel-widget forms-panel" style="height: 440px;width: 62%; display: inline-block">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">
@@ -100,11 +100,11 @@
                 {
                     if (item.device_status == 1)
                     {
-                        <p>@item.device_name is <a style="color:green" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Active</a></p>
+                <p>@item.device_name is <a style="color:green" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Active</a></p>
                     }
                     else
                     {
-                        <p>@item.device_name is <a style="color:red" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
+                <p>@item.device_name is <a style="color:red" href="@Url.Action("activeDevice", "Admin", new {@item_id = item.device_id})">Deactive</a></p>
                     }
                 }
             </div>
@@ -121,7 +121,7 @@
             <div class="form-body" style="padding:10px; padding-left:30px">
                 @foreach (var item in Model.listAttent)
                 {
-                    <p><a href="@Url.Action("Profile", "Users", new {@userID = item.user_id})">@item.fullname</a> attend at "@item.location" at @item.log_time</p>
+                <p><a href="@Url.Action("Profile", "Users", new {@userID = item.user_id})">@item.fullname</a> attend at "@item.location" at @item.log_time</p>
                 }
             </div>
         </div>

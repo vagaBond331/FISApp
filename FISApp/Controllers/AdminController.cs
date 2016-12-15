@@ -140,6 +140,7 @@ namespace FISApp.Controllers
             if (Session["logUserID"] == null) return RedirectToAction("Logout", "Users");
             return View();
         }
+
         public FileContentResult ExportCSV(ExportLOGModel model)
         {
             List<Attent> atList = db.Attents.Where(t => (t.attent_time >= model.startDate && t.attent_time <= model.endDate)).ToList();
