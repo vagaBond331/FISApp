@@ -133,6 +133,7 @@ namespace FISApp.Controllers
             pr.email = logUser.mail;
             pr.user_type = logUser.user_type;
             pr.status = logUser.status;
+            pr.avatar = String.IsNullOrEmpty(logUser.avatar)? "/Images/avatar.jpg" : logUser.avatar;
 
             return pr;
         }

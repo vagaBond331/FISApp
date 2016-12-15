@@ -151,6 +151,7 @@ namespace FISApp.Controllers
                     var fileName = String.Format("{0}-{1}.jpg", model.user_id, "avatar");
                     var path = Path.Combine(Server.MapPath(String.Format("~/Images/User/{0}", model.user_id)), fileName);
                     model._avatar.SaveAs(path);
+                    user.avatar = String.Format("/Images/User/{0}/{1}", model.user_id, fileName);
                 }
                 db.Entry(user).State = EntityState.Modified;
                 db.Entry(db.TempUsers.FirstOrDefault()).State = EntityState.Deleted;
@@ -160,7 +161,7 @@ namespace FISApp.Controllers
             else
             {
                 if (user == null) return Content("Error");
-                model.finger_image_src = "~Image/User/default.jpg";
+                model.finger_image_src = "/Images/User/default.jpg";
             }
             if (user == null) return Content("Error");
             model.avatar = String.IsNullOrEmpty(user.avatar) ? "/Images/avatar.jpg" : user.avatar;
