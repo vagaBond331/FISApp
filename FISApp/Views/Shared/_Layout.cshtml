@@ -74,22 +74,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="@Url.Action("Index", "Admin")"><i class="fa fa-home nav_icon"></i><span class="nav-text">Dashboard</span></a>
                 }
             </li>
-
-            <li>
-                <a href="@Url.Action("Profile", "Users")">
-                    <i class="fa fa-file-text-o nav_icon"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
-            </li>
             @if (Session["logUserType"].ToString() != "3") // Admin or Manager
             {
-                <li>
-                    <a href="@Url.Action("ListProfile", "Users")">
-                        <i class="fa fa-bar-chart nav_icon"></i>
-                        <span class="nav-text">Employee</span>
-                    </a>
-                </li>
-
                 <li class="has-subnav">
                     <a href="javascript:;">
                         <i class="fa fa-cogs" aria-hidden="true"></i>
@@ -114,7 +100,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         }
                     </ul>
                 </li>
+                <li>
+                    <a href="@Url.Action("ListProfile", "Users")">
+                        <i class="fa fa-bar-chart nav_icon"></i>
+                        <span class="nav-text">Employee</span>
+                    </a>
+                </li>
             }
+
+            <li>
+                <a href="@Url.Action("Profile", "Users")">
+                    <i class="fa fa-file-text-o nav_icon"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </li>
         </ul>
         <ul class="logout">
             <li>

@@ -1522,7 +1522,7 @@ nav.user-menu .panel .list-group-item {
 	}
 	*/
 .main-grid {
-    padding: 3em;
+    padding: 2em;
 }
 
 .dashboard-page .title-bar {
@@ -4792,7 +4792,7 @@ button.note-color-btn {
     margin-top: 10px;
 }
 
-.forms button.btn.btn-default {
+.forms button.btn.btn-default, input.btn.btn-default {
     background-color: #fcb216;
     color: #fff;
     border: solid 2px #fcb216;
@@ -4807,7 +4807,7 @@ button.note-color-btn {
     text-decoration: none;
 }
 
-    .forms button.btn.btn-default:hover {
+    .forms button.btn.btn-default:hover, input.btn.btn-default:hover {
         border: solid 2px #000;
         background: none;
         color: #000;

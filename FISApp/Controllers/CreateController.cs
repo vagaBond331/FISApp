@@ -30,19 +30,7 @@ namespace FISApp.Controllers
             List<SelectListItem> listItems = new List<SelectListItem>();
             foreach (var item in listPos)
             {
-                switch (item.pos_type)
-                {
-                    case 1:
-                        listItems.Add(new SelectListItem { Text = item.pos_displayed + " (Admin role)", Value = item.pos_id });
-                        break;
-                    case 2:
-                        listItems.Add(new SelectListItem { Text = item.pos_displayed + " (Manager role)", Value = item.pos_id });
-                        break;
-                    case 3:
-                        listItems.Add(new SelectListItem { Text = item.pos_displayed + " (Employee role)", Value = item.pos_id });
-                        break;
-                    default: break;
-                }
+                listItems.Add(new SelectListItem { Text = item.pos_displayed, Value = item.pos_id });
             }
 
             ViewBag.PosList = listItems;

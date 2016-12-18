@@ -1,77 +1,88 @@
 ﻿@model FISApp.Models.UpdateEmpImageModel
 @{
-	ViewBag.Title = "UpdateEmpImage";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "UpdateEmpImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/profile-style2.css" rel="stylesheet" />
 
+<style>
+    #view-forms {
+        display: relative;
+        width: 100%;
+        background-position: center top;
+        background-size: cover;
+    }
+</style>
+
 <div class="panel panel-widget forms-panel" style="height: 613px;">
-	@using (Html.BeginForm("UpdateEmpImage", "Create", FormMethod.Post, new { enctype = "multipart/form-data" }))
-	{
-	<div class="forms" style="background-color: #00acc1;">
-		<div class="form-grids widget-shadow" data-example-id="basic-forms">
-			<div class="col-md-7 header-right">
-				<h1>Hi !</h1>
-				<h6>@Model.profile.position</h6>
-				<ul class="address">
-					<li>
-						<ul class="address-text">
-							<li><b>NAME</b></li>
-							<li>@Model.profile.name</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="address-text">
-							<li><b>D.O.B</b></li>
-							<li>@Model.profile.DOB</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="address-text">
-							<li><b>PHONE </b></li>
-							<li>@Model.profile.phone</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="address-text">
-							<li><b>DEPARTMENT </b></li>
-							<li>@Model.profile.department</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="address-text">
-							<li><b>ADDRESS </b></li>
-							<li>@Model.profile.address</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="address-text">
-							<li><b>E-MAIL </b></li>
-							<li><a href="mailto:example@mail.com">@Model.profile.email</a></li>
-						</ul>
-					</li>
-					<li>
-						<ul>
-							<li style="display: inline-block;">
-								<img height="150" width="150" src="@Model.finger_image_src" id="finger" />
-							</li>
-							<li style="display: inline;margin-left: 40px;">
-								<button type="submit" value="Register" class="btn btn-default w3ls-button" onclick="return Validate();" id="btnRegis">Save</button>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<input type="hidden" value="@Model.finger_image_src" name="finger_image_src" id="finger_image_src" />
-			<input type="hidden" value="@Model.user_id" name="user_id" id="user_id" />
-			<div class="col-md-5 header-left">
-				@Html.TextBoxFor(model => model._avatar, new { type = "file", id = "_avatar", @class = "upload" })
-				<img height="400px" width="400px" src="@Model.avatar" id="imgavatar" />
-			</div>
-			<div class="clearfix" style="height: 593px;"> </div>
-		</div>
-	</div>
-	}
+    @using (Html.BeginForm("UpdateEmpImage", "Create", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="forms" style="background-color: #00acc1;">
+            <div class="form-grids widget-shadow" id="view-forms">
+                <div class="col-md-7 header-right">
+                    <h1>Hi !</h1>
+                    <h6>@Model.profile.userID - @Model.profile.position</h6>
+                    <ul class="address">
+                        <li>
+                            <ul class="address-text">
+                                <li><b>NAME</b></li>
+                                <li>@Model.profile.name</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="address-text">
+                                <li><b>D.O.B</b></li>
+                                <li>@Model.profile.DOB</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="address-text">
+                                <li><b>PHONE </b></li>
+                                <li>@Model.profile.phone</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="address-text">
+                                <li><b>DEPARTMENT </b></li>
+                                <li>@Model.profile.department</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="address-text">
+                                <li><b>ADDRESS </b></li>
+                                <li>@Model.profile.address</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="address-text">
+                                <li><b>E-MAIL </b></li>
+                                <li><a href="mailto:example@mail.com">@Model.profile.email</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li style="display: inline-block;">
+                                    <img height="150" width="150" src="@Model.finger_image_src" id="finger" />
+                                </li>
+                                <li style="display: inline;margin-left: 40px;">
+                                    <button type="submit" value="Register" class="btn btn-default w3ls-button" onclick="return Validate();" id="btnRegis">Save</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <input type="hidden" value="@Model.finger_image_src" name="finger_image_src" id="finger_image_src" />
+                <input type="hidden" value="@Model.user_id" name="user_id" id="user_id" />
+                <div class="col-md-5 header-left">
+                    <img height="400px" width="400px" style="margin:0 0 30px 0" src="@Model.avatar" id="imgavatar" />
+                    <br />
+                    <input type="button" class="btn btn-default w3ls-button" value="Browse..." onclick="document.getElementById('_avatar').click();" />
+                    @Html.TextBoxFor(model => model._avatar, new { type = "file", id = "_avatar", @class = "hidden" })
+                </div>
+                <div class="clearfix" style="height: 593px;"> </div>
+            </div>
+        </div>
+    }
 </div>
 
 
@@ -79,52 +90,58 @@
 
 
 <script type="text/javascript">
-	function Validate() {
-		var s = $("#finger_image_src").val();
-		if (s == "" || s == "/Images/User/default.jpg") {
-			console.log("false");
-		} else if (s.includes("@Model.user_id" + ".bmp")) {
-			console.log("True");
-			return true;
-		}
-		swal("Waiting for scanning fingerprint");
-		return false;
-	}
+    function Validate() {
+        var s = $("#finger_image_src").val();
+        if (s == "" || s == "/Images/User/default.jpg") {
+            console.log("false");
+        } else if (s.includes("@Model.user_id" + ".bmp")) {
+            console.log("True");
+            return true;
+        }
+        swal("Waiting for scanning fingerprint");
+        return false;
+    }
 
-	$(document).ready(function () {
-		var scanfingerimage = function () {
-			$.ajax({
-				url: 'RequestFingerImage',
-				type: 'POST',
-				error: function (request) { },
-				success: function (data) {
-					if (data.Success == true) {
-						$("#finger_image_src").val(data.Path);
-						$('#finger').attr('src', data.Path);
-					} else {
-						setTimeout(scanfingerimage, 5000);
-					}
+    $(document).ready(function () {
+        var scanfingerimage = function () {
+            $.ajax({
+                url: 'RequestFingerImage',
+                type: 'POST',
+                error: function (request) { },
+                success: function (data) {
+                    if (data.Success == true) {
+                        $("#finger_image_src").val(data.Path);
+                        $('#finger').attr('src', data.Path);
+                    } else {
+                        setTimeout(scanfingerimage, 5000);
+                    }
 
-				}
-			});
-		};
-		scanfingerimage();
-		swal("@Model.user_id was registered", "Now you can update avatar and fingerprint.")
-	});
+                }
+            });
+        };
+        scanfingerimage();
+        swal("@Model.user_id was registered", "Now you can update avatar and fingerprint.")
+    });
 
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-			reader.onload = function (e) {
-				$('#imgavatar').attr('src', e.target.result);
-			}
+            reader.onload = function (e) {
+                $('#imgavatar').attr('src', e.target.result);
+                document.getElementsByTagName("STYLE")[0].innerHTML = "#view-forms {" +
+                "display: relative;" +
+                "width: 100%;" +
+                "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(" + e.target.result + ") no-repeat;" +
+                "background-position: center top;" +
+                "background-size:cover;}";
+            }
 
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-	$("#_avatar").change(function () {
-		readURL(this);
-	});
+    $("#_avatar").change(function () {
+        readURL(this);
+    });
 </script>
