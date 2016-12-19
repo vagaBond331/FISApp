@@ -22,7 +22,7 @@ namespace FISApp.Controllers
             string userID = Session["logUserID"].ToString();
 
             List<Attent> atList = db.Attents.Where(u => u.attent_user.Equals(userID)).OrderBy(t => t.attent_time).ToList();
-            atList = Enumerable.Reverse(atList).Take(5).ToList();
+            atList = Enumerable.Reverse(atList).Take(10).ToList();
 
             foreach (var item in atList)
             {

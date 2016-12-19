@@ -28,7 +28,7 @@ namespace FISApp.Models
         public int user_type { get; set; }
         public string full_name { get; set; }
         public string mail { get; set; }
-        public Nullable<System.DateTime> DOB { get; set; }
+        public DateTime DOB { get; set; }
         public string gender { get; set; }
         public string address { get; set; }
         public string pos_id { get; set; }

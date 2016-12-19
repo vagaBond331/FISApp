@@ -126,7 +126,7 @@ namespace FISApp.Controllers
             pr.userID = logUser.user_id;
             pr.position = db.Positions.Find(logUser.pos_id).pos_displayed;
             pr.name = logUser.full_name;
-            pr.DOB = logUser.DOB;
+            pr.DOB = logUser.DOB.ToShortDateString();
             pr.phone = logUser.phone;
             pr.department = logUser.department;
             pr.address = logUser.address;

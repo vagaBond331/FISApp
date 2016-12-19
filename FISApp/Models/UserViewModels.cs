@@ -30,7 +30,7 @@ namespace FISApp.Models
         public string name { get; set; }
 
         [Display(Name = "DOB")]
-        public Nullable<System.DateTime> DOB { get; set; }
+        public string DOB { get; set; }
 
         [Display(Name = "Phone number")]
         public string phone { get; set; }

@@ -5,57 +5,102 @@
 }
 
 
-<div class="panel panel-widget forms-panel">
+<div class="panel panel-widget forms-panel" style="width: 45%; display: inline-block;">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">
                 <h3>Attendance of @DateTime.Now.Month - @DateTime.Now.Year</h3>
             </div>
             <div class="form-body" style="padding:0px">
-                <table border="1">
-                    <tr>
-                        @for (int i = 1; i <= Model.numDays; i++)
-                        {
-                            <th style="background-color:#fcb216" class="tbcell">@(i)</th>
-                        }
-                    </tr>
-                    <tr>
-                        @for (int i = 1; i <= Model.numDays; i++)
-                        {
-                            if (@Model.monthAttend[i] == true)
+                <table>
+                    <thead>
+                        <tr>
+                            @for (int i = 1; i <= 10; i++)
                             {
-                                <td style="color:green">&#10004;</td>
+                                <th style="text-align: center;">@(i.ToString("D2"))</th>
                             }
-                            else if (i < DateTime.Now.Day)
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @for (int i = 1; i <= 10; i++)
                             {
-                                <td style="color:red">&#10006;</td>
+                                if (@Model.monthAttend[i] == true)
+                                {
+                                    <td style="color:green;text-align: center;">&#10004;</td>
+                                }
+                                else if (i < DateTime.Now.Day)
+                                {
+                                    <td style="color:red;text-align: center;">&#10006;</td>
+                                }
+                                else
+                                {
+                                    <td style="color:black;text-align: center;">-</td>
+                                }
                             }
-                            else
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            @for (int i = 11; i <= 20; i++)
                             {
-                                <td style="color:black">N</td>
+                                <th style="text-align: center;">@(i.ToString("D2"))</th>
                             }
-                        }
-                    </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @for (int i = 11; i <= 20; i++)
+                            {
+                                if (@Model.monthAttend[i] == true)
+                                {
+                                    <td style="color:green;text-align: center;">&#10004;</td>
+                                }
+                                else if (i < DateTime.Now.Day)
+                                {
+                                    <td style="color:red;text-align: center;">&#10006;</td>
+                                }
+                                else
+                                {
+                                    <td style="color:black;text-align: center;">-</td>
+                                }
+                            }
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            @for (int i = 21; i <= Model.numDays; i++)
+                            {
+                                <th style="text-align: center;">@(i.ToString("D2"))</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @for (int i = 21; i <= Model.numDays; i++)
+                            {
+                                if (@Model.monthAttend[i] == true)
+                                {
+                                    <td style="color:green;text-align: center;">&#10004;</td>
+                                }
+                                else if (i < DateTime.Now.Day)
+                                {
+                                    <td style="color:red;text-align: center;">&#10006;</td>
+                                }
+                                else
+                                {
+                                    <td style="color:black;text-align: center;">-</td>
+                                }
+                            }
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 
-<div class="panel panel-widget forms-panel" style="width: 48%; display: inline-block; min-height:240px">
-    <div class="forms">
-        <div class="form-grids widget-shadow" data-example-id="basic-forms">
-            <div class="form-title">
-                <h3>Device status</h3>
-            </div>
-            <div class="form-body" style="padding:10px; padding-left:30px">
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel panel-widget forms-panel" style="width: 50%; display: inline-block; float:right">
+<div class="panel panel-widget forms-panel" style="width: 53%; display: inline-block; float:right; min-height:342px">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">
             <div class="form-title">

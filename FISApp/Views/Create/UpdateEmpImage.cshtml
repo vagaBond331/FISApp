@@ -13,7 +13,7 @@
         background-size: cover;
     }
 </style>
-
+<link href="~/Content/loading.css" rel="stylesheet" />
 <div class="panel panel-widget forms-panel" style="height: 613px;">
     @using (Html.BeginForm("UpdateEmpImage", "Create", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -62,10 +62,17 @@
                         <li>
                             <ul>
                                 <li style="display: inline-block;">
-                                    <img height="150" width="150" src="@Model.finger_image_src" id="finger" />
+                                    <img style="display:none" height="150" width="150" src="@Model.finger_image_src" id="finger" />
+                                    <div id="loading-spinner" class="spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                        <div class="rect5"></div>
+                                    </div>
                                 </li>
                                 <li style="display: inline;margin-left: 40px;">
-                                    <button type="submit" value="Register" class="btn btn-default w3ls-button" onclick="return Validate();" id="btnRegis">Save</button>
+                                    <button type="submit" style="display:none" value="Register" class="btn btn-default w3ls-button" onclick="return Validate();" id="btnRegis">Save</button>
                                 </li>
                             </ul>
                         </li>
@@ -110,6 +117,9 @@
                 error: function (request) { },
                 success: function (data) {
                     if (data.Success == true) {
+                        document.getElementById('loading-spinner').style.display = "none";
+                        document.getElementById('finger').style.display = "inline";
+                        document.getElementById('btnRegis').style.display = "inline";
                         $("#finger_image_src").val(data.Path);
                         $('#finger').attr('src', data.Path);
                     } else {

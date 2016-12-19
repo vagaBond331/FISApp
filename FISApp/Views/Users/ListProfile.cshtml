@@ -13,22 +13,22 @@
             <div class="form-body" style="padding:0px">
                 <table class="table">
                     <tr>
-                        <th>
+                        <th width="100px">
                             @Html.DisplayNameFor(model => model.userID)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.name)
                         </th>
-                        <th>
+                        <th width="150px">
                             @Html.DisplayNameFor(model => model.position)
                         </th>
-                        <th>
+                        <th width="200px">
                             @Html.DisplayNameFor(model => model.phone)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.email)
                         </th>
-                        <th>
+                        <th width="70px">
                             @Html.DisplayNameFor(model => model.status)
                         </th>
                         <th></th>
@@ -58,7 +58,7 @@
                                     <a style="color:green" href="#" onclick="changeStt()">Active</a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
                                 </td>
                             </tr>
                         }
@@ -78,22 +78,22 @@
             <div class="form-body" style="padding:0px">
                 <table class="table">
                     <tr>
-                        <th>
+                        <th width="100px">
                             @Html.DisplayNameFor(model => model.userID)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.name)
                         </th>
-                        <th>
+                        <th width="150px">
                             @Html.DisplayNameFor(model => model.position)
                         </th>
-                        <th>
+                        <th width="200px">
                             @Html.DisplayNameFor(model => model.phone)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.email)
                         </th>
-                        <th>
+                        <th width="70px">
                             @Html.DisplayNameFor(model => model.status)
                         </th>
                         <th></th>
@@ -123,7 +123,7 @@
                                     <a style="color:green" href="#" onclick="changeStt()">Active</a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
                                 </td>
                             </tr>
                         }
@@ -143,22 +143,22 @@
             <div class="form-body" style="padding:0px">
                 <table class="table">
                     <tr>
-                        <th>
+                        <th width="100px">
                             @Html.DisplayNameFor(model => model.userID)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.name)
                         </th>
-                        <th>
+                        <th width="150px">
                             @Html.DisplayNameFor(model => model.position)
                         </th>
-                        <th>
+                        <th width="200px">
                             @Html.DisplayNameFor(model => model.phone)
                         </th>
-                        <th>
+                        <th width="300px">
                             @Html.DisplayNameFor(model => model.email)
                         </th>
-                        <th>
+                        <th width="70px">
                             @Html.DisplayNameFor(model => model.status)
                         </th>
                         <th></th>
@@ -188,7 +188,7 @@
                                     <a style="color:red" href="#" onclick="changeStt()">Deactive</a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Index</a>
+                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
                                 </td>
                             </tr>
                         }
@@ -201,7 +201,6 @@
 
 <script type="text/javascript">
     function changeStt() {
-        alert(1);
         var x;
         if (confirm("Are you sure to deactive ") == true) {
             x = "You pressed OK!";
