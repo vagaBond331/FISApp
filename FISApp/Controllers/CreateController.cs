@@ -22,6 +22,8 @@ namespace FISApp.Controllers
             List<Position> listPos = db.Positions.ToList();
             listPos = listPos.OrderBy(o => o.pos_type).ToList();
 
+            listPos = listPos.Where(o => o.pos_type != 1).ToList();
+
             if (logUser.user_type == 2)
             {
                 listPos = listPos.Where(o => o.pos_type == 3).ToList();
@@ -30,8 +32,7 @@ namespace FISApp.Controllers
             List<SelectListItem> listItems = new List<SelectListItem>();
             foreach (var item in listPos)
             {
-                if (!item.pos_id.Equals("AD"))
-                    listItems.Add(new SelectListItem { Text = item.pos_displayed, Value = item.pos_id });
+                listItems.Add(new SelectListItem { Text = item.pos_displayed, Value = item.pos_id });
             }
 
             ViewBag.PosList = listItems;
