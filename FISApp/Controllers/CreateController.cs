@@ -30,7 +30,8 @@ namespace FISApp.Controllers
             List<SelectListItem> listItems = new List<SelectListItem>();
             foreach (var item in listPos)
             {
-                listItems.Add(new SelectListItem { Text = item.pos_displayed, Value = item.pos_id });
+                if (!item.pos_id.Equals("AD"))
+                    listItems.Add(new SelectListItem { Text = item.pos_displayed, Value = item.pos_id });
             }
 
             ViewBag.PosList = listItems;
