@@ -18,7 +18,7 @@
         <div class="form-grids widget-shadow" id="view-forms">
             <div class="col-md-7 header-right">
                 <h1>Hi !</h1>
-                <h6>@Model.position</h6>
+                <h6>@Model.userID - @Model.position</h6>
                 <ul class="address">
                     <li>
                         <ul class="address-text">
@@ -55,6 +55,10 @@
                             <li><b>E-MAIL </b></li>
                             <li><a href="mailto:example@mail.com">@Model.email</a></li>
                         </ul>
+                    </li>
+                    <br />
+                    <li>
+                        <a style="color:#fcb216" href="@Url.Action("EditProfile", "Users", new {@userID = @Model.userID})">Edit</a>
                     </li>
                 </ul>
             </div>

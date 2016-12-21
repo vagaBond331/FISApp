@@ -3,72 +3,73 @@
     ViewBag.Title = "ListProfile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (Session["logUserType"].ToString() == "1")
+{
+    <div class="panel panel-widget forms-panel">
+        <div class="forms">
+            <div class="form-grids widget-shadow" data-example-id="basic-forms">
+                <div class="form-title">
+                    <h3>List manager</h3>
+                </div>
+                <div class="form-body" style="padding:0px">
+                    <table class="table">
+                        <tr>
+                            <th width="100px">
+                                @Html.DisplayNameFor(model => model.userID)
+                            </th>
+                            <th width="300px">
+                                @Html.DisplayNameFor(model => model.name)
+                            </th>
+                            <th width="150px">
+                                @Html.DisplayNameFor(model => model.position)
+                            </th>
+                            <th width="200px">
+                                @Html.DisplayNameFor(model => model.phone)
+                            </th>
+                            <th width="300px">
+                                @Html.DisplayNameFor(model => model.email)
+                            </th>
+                            <th width="70px">
+                                @Html.DisplayNameFor(model => model.status)
+                            </th>
+                            <th></th>
+                        </tr>
 
-<div class="panel panel-widget forms-panel">
-    <div class="forms">
-        <div class="form-grids widget-shadow" data-example-id="basic-forms">
-            <div class="form-title">
-                <h3>List manager</h3>
-            </div>
-            <div class="form-body" style="padding:0px">
-                <table class="table">
-                    <tr>
-                        <th width="100px">
-                            @Html.DisplayNameFor(model => model.userID)
-                        </th>
-                        <th width="300px">
-                            @Html.DisplayNameFor(model => model.name)
-                        </th>
-                        <th width="150px">
-                            @Html.DisplayNameFor(model => model.position)
-                        </th>
-                        <th width="200px">
-                            @Html.DisplayNameFor(model => model.phone)
-                        </th>
-                        <th width="300px">
-                            @Html.DisplayNameFor(model => model.email)
-                        </th>
-                        <th width="70px">
-                            @Html.DisplayNameFor(model => model.status)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
-                        if (item.user_type == 2 && item.status == 1)
+                        @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.userID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.position)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.phone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.email)
-                                </td>
-                                <td>
-                                    <a style="color:green" href="@Url.Action("ChangeStatus", "Users", new {@id = item.userID})">Active</a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
-                                </td>
-                            </tr>
+                            if (item.user_type == 2 && item.status == 1)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.userID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.position)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td>
+                                        <a style="color:green" href="@Url.Action("ChangeStatus", "Users", new {@id = item.userID})">Active</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
+                                    </td>
+                                </tr>
+                            }
                         }
-                    }
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+}
 <div class="panel panel-widget forms-panel">
     <div class="forms">
         <div class="form-grids widget-shadow" data-example-id="basic-forms">

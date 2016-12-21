@@ -90,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 New employee
                             </a>
                         </li>
-                        @if (ViewBag.logUserType != 2) // Admin
+                        @if (Session["logUserType"].ToString() == "1") // Admin
                         {
                             <li>
                                 <a class="subnav-text" href="@Url.Action("CreateDevice", "Create")">

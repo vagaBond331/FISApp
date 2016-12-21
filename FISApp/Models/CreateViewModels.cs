@@ -7,13 +7,13 @@ namespace FISApp.Models
 {
     public class CreateEmployeeModel
     {
-        //[Required]
+        public string userID { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [Display(Name = "Username")]
         public string username { get; set; }
 
-        //[Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string password { get; set; }
@@ -32,12 +32,15 @@ namespace FISApp.Models
         [Display(Name = "Date of Birth")]
         public Nullable<System.DateTime> DOB { get; set; }
 
+        [Required]
         [Display(Name = "Address")]
         public string address { get; set; }
 
+        [Required]
         [Display(Name = "Position")]
         public string posID { get; set; }
 
+        [Required]
         [Display(Name = "Department")]
         public string department { get; set; }
 

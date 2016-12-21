@@ -143,6 +143,35 @@ namespace FISApp.Controllers
             return RedirectToAction("ListProfile", "Users");
         }
 
+        public ActionResult EditProfile(string userID)
+        {
+            User us = db.Users.Find(userID);
+            CreateEmployeeModel model = new CreateEmployeeModel();
+            model.userID = us.user_id;
+            model.full_name = us.full_name;
+            model.Email = us.mail;
+            model.DOB = us.DOB;
+            model.address = us.address;
+            model.department = us.department;
+            model.phone = us.phone;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(CreateEmployeeModel mod, string id)
+        {
+            User us = db.Users.Find(id);
+            us.full_name = mod.full_name;
+            us.mail = mod.Email;
+            us.DOB = mod.DOB ?? DateTime.Now;
+            us.address = mod.address;
+            us.department = mod.department;
+            us.phone = mod.phone;
+            db.SaveChanges();
+
+            return RedirectToAction("Profile", "Users", new { userID = id });
+        }
+
         public Profile userToProfile(User logUser)
         {
             Profile pr = new Profile();
