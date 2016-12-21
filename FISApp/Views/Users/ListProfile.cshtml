@@ -55,7 +55,7 @@
                                     @Html.DisplayFor(modelItem => item.email)
                                 </td>
                                 <td>
-                                    <a style="color:green" href="#" onclick="changeStt()">Active</a>
+                                    <a style="color:green" href="@Url.Action("ChangeStatus", "Users", new {@id = item.userID})">Active</a>
                                 </td>
                                 <td>
                                     <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
@@ -120,7 +120,7 @@
                                     @Html.DisplayFor(modelItem => item.email)
                                 </td>
                                 <td>
-                                    <a style="color:green" href="#" onclick="changeStt()">Active</a>
+                                    <a style="color:green" href="@Url.Action("ChangeStatus", "Users", new {@id = item.userID})">Active</a>
                                 </td>
                                 <td>
                                     <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
@@ -185,7 +185,7 @@
                                     @Html.DisplayFor(modelItem => item.email)
                                 </td>
                                 <td>
-                                    <a style="color:red" href="#" onclick="changeStt()">Deactive</a>
+                                    <a style="color:red" href="@Url.Action("ChangeStatus", "Users", new {@id = item.userID})">Deactive</a>
                                 </td>
                                 <td>
                                     <a href="@Url.Action("Profile", "Users", new {@userID = item.userID})">Profile</a>
@@ -198,14 +198,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function changeStt() {
-        var x;
-        if (confirm("Are you sure to deactive ") == true) {
-            x = "You pressed OK!";
-        } else {
-            x = "You pressed Cancel!";
-        }
-    }
-</script>

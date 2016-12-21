@@ -36,7 +36,7 @@ namespace FISApp.Controllers
                 }
             }
 
-            if (ck == 0) return RedirectToAction("Login", "Users");
+            if (us.status == 0) return RedirectToAction("Login", "Users");
             else
             {
                 Session["logUserID"] = us.user_id;
@@ -69,7 +69,7 @@ namespace FISApp.Controllers
 
             string oldPass = db.Users.Find(Session["logUserID"]).password;
 
-            if(model.newPass.Length < 6 || model.newPass.Length > 18 || model.newPass2.Length < 6 || model.newPass2.Length > 18)
+            if (model.newPass.Length < 6 || model.newPass.Length > 18 || model.newPass2.Length < 6 || model.newPass2.Length > 18)
             {
                 return View(model);
             }
@@ -120,6 +120,29 @@ namespace FISApp.Controllers
             return View(listProfile);
         }
 
+        public ActionResult ChangeStatus(string id)
+        {
+            if (db.Users.Find(id).status == 1)
+            {
+                db.Users.Find(id).status = 0;
+                foreach (var item in db.Attents.Where(o => o.attent_user.Equals(id)))
+                {
+                    item.attent_type = 0;
+                }
+            }
+            else
+            {
+                db.Users.Find(id).status = 1;
+                foreach (var item in db.Attents.Where(o => o.attent_user.Equals(id)))
+                {
+                    item.attent_type = 1;
+                }
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("ListProfile", "Users");
+        }
+
         public Profile userToProfile(User logUser)
         {
             Profile pr = new Profile();
@@ -133,7 +156,7 @@ namespace FISApp.Controllers
             pr.email = logUser.mail;
             pr.user_type = logUser.user_type;
             pr.status = logUser.status;
-            pr.avatar = String.IsNullOrEmpty(logUser.avatar)? "/Images/avatar.jpg" : logUser.avatar;
+            pr.avatar = String.IsNullOrEmpty(logUser.avatar) ? "/Images/avatar.jpg" : logUser.avatar;
 
             return pr;
         }

@@ -80,9 +80,9 @@
                     Morris.Donut({
                         element: 'graph4',
                         data: [
-                          { value: 10, label: 'Attent', formatted: '10% at 12/2016' },
-                          { value: 55, label: 'Absent', formatted: '50% at 12/2016' },
-                          { value: 40, label: 'Not yet', formatted: 'about 40%' }
+                          { value: @Model.circleChart.attentTotal, label: 'Attent', formatted: '@Model.circleChart.attentTotal% at 12/2016' },
+                          { value: @Model.circleChart.absentTotal, label: 'Absent', formatted: '@Model.circleChart.absentTotal% at 12/2016' },
+                          { value: @Model.circleChart.notyetTotal, label: 'Not yet', formatted: 'about @Model.circleChart.notyetTotal%' }
                         ],
                         formatter: function (x, data) { return data.formatted; }
                     });

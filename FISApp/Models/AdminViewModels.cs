@@ -26,6 +26,8 @@ namespace FISApp.Models
 
         public string[] countDate { get; set; }
 
+        public CircleChart circleChart { get; set; }
+
         public AdminViewModels()
         {
             logUser = new User();
@@ -36,6 +38,7 @@ namespace FISApp.Models
             listDevice = new List<Device>();
             listAttent = new List<AttendViewModel>();
             countDate = new string[10];
+            circleChart = new CircleChart();
         }
     }
 
@@ -45,6 +48,20 @@ namespace FISApp.Models
         public string fullname;
         public string location;
         public DateTime log_time;
+    }
+
+    public class CircleChart
+    {
+        public int attentTotal;
+        public int absentTotal;
+        public int notyetTotal;
+
+        public CircleChart()
+        {
+            attentTotal = 0;
+            absentTotal = 0;
+            notyetTotal = 0;
+        }
     }
 
     public class ExportLOGModel

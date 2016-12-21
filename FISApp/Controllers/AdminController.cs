@@ -18,7 +18,7 @@ namespace FISApp.Controllers
 
             AdminViewModels model = new AdminViewModels();
             model.logUser = db.Users.Find(Session["logUserID"]);
-            foreach (var item in db.Users)
+            foreach (var item in db.Users.Where(o => o.status == 1))
             {
                 if (item.user_type != 1)
                 {
@@ -27,11 +27,26 @@ namespace FISApp.Controllers
                     model.monthAttend.Add(checkAttend(item, DateTime.Now.Month));
                 }
             }
+            foreach (var item in model.monthAttend)
+            {
+                bool[] a = item;
+                for (int i = 0; i < a.Count(); i++)
+                {
+                    if (a[i] == true) model.circleChart.attentTotal++;
+                }
+            }
+
+            int totalWork = model.numDays * model.empListName.Count();
+            model.circleChart.notyetTotal = (model.numDays - DateTime.Now.Day) * model.empListName.Count();
+
+            model.circleChart.attentTotal = 100 * model.circleChart.attentTotal / totalWork;
+            model.circleChart.notyetTotal = 100 * model.circleChart.notyetTotal / totalWork;
+            model.circleChart.absentTotal = 100 - model.circleChart.attentTotal - model.circleChart.notyetTotal;
+
             model.listDevice = db.Devices.ToList();
 
-            List<Attent> atList = db.Attents.OrderBy(t => t.attent_time).ToList();
+            List<Attent> atList = db.Attents.Where(o => o.attent_type == 1).OrderBy(t => t.attent_time).ToList();
             atList = Enumerable.Reverse(atList).Take(5).ToList();
-
             foreach (var item in atList)
             {
                 AttendViewModel at = new AttendViewModel();
@@ -64,11 +79,11 @@ namespace FISApp.Controllers
         public int[] countAttent()
         {
             int[] at = new int[10];
-            List<Attent> list = db.Attents.ToList();
+            List<Attent> list = db.Attents.Where(o => o.attent_type == 1).ToList();
             for (int i = 0; i < list.Count; i++)
             {
                 Attent item = list[i];
-                if (db.Users.Find(item.attent_user).user_type == 1)
+                if (db.Users.Find(item.attent_user).user_type == 1 || db.Users.Find(item.attent_user).status == 0)
                 {
                     list.Remove(item);
                     i--;
@@ -91,7 +106,7 @@ namespace FISApp.Controllers
         public int[] countAbsent(int[] at)
         {
             int[] ab = new int[10];
-            int emp = db.Users.Where(o => o.user_type != 1).ToList().Count();
+            int emp = db.Users.Where(o => o.user_type != 1 && o.status == 1).ToList().Count();
             for (int i = 0; i < 10; i++)
             {
                 ab[i] = emp - at[i];
@@ -106,7 +121,7 @@ namespace FISApp.Controllers
             //1st == listMonth[1]
             bool[] listMonth = new bool[DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + 1];
 
-            List<Attent> list = db.Attents.Where(o => o.attent_user.Equals(us.user_id)).ToList();
+            List<Attent> list = db.Attents.Where(o => o.attent_type == 1).Where(o => o.attent_user.Equals(us.user_id)).ToList();
 
             //save to bool[] 
             for (int i = 0; i < list.Count; i++)
@@ -143,7 +158,7 @@ namespace FISApp.Controllers
 
         public FileContentResult ExportCSV(ExportLOGModel model)
         {
-            List<Attent> atList = db.Attents.Where(t => (t.attent_time >= model.startDate && t.attent_time <= model.endDate)).ToList();
+            List<Attent> atList = db.Attents.Where(o => o.attent_type == 1).Where(t => (t.attent_time >= model.startDate && t.attent_time <= model.endDate)).ToList();
             if (Session["logUserType"].Equals("3"))
             {
                 foreach (var item in atList)
