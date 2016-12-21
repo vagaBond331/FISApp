@@ -18,7 +18,7 @@ namespace FISApp.Controllers
             if (!String.IsNullOrEmpty(deviceID))
             {
                 Device device = db.Devices.Find(deviceID);
-                if (device == null || device.device_status == 1) return "reg_fail";
+                if (device == null || device.device_status != 1) return "reg_fail";
             }
             if (file != null && file.ContentLength > 0)
             {
@@ -42,7 +42,7 @@ namespace FISApp.Controllers
             if (!String.IsNullOrEmpty(deviceID))
             {
                 Device device = db.Devices.Find(deviceID);
-                if (device == null || device.device_status == 1) return "log_fail";
+                if (device == null || device.device_status != 1) return "log_fail";
             }
             try
             {
@@ -52,7 +52,7 @@ namespace FISApp.Controllers
                     attent_device = deviceID,
                     attent_user = userID,
                     attent_time = DateTime.Now,
-                    attent_type = 0
+                    attent_type = db.Users.Find(userID).status
                 };
                 db.Attents.Add(atten);
                 db.SaveChanges();
@@ -74,7 +74,7 @@ namespace FISApp.Controllers
             if (!String.IsNullOrEmpty(deviceID))
             {
                 Device device = db.Devices.Find(deviceID);
-                if (device == null || device.device_status == 1) return "reg_fail";
+                if (device == null || device.device_status != 1) return "reg_fail";
             }
             try
             {
