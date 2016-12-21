@@ -52,7 +52,7 @@ namespace FISApp.Controllers
                     attent_device = deviceID,
                     attent_user = userID,
                     attent_time = DateTime.Now,
-                    attent_type = 0
+                    attent_type = db.Users.Find(userID).status
                 };
                 db.Attents.Add(atten);
                 db.SaveChanges();
